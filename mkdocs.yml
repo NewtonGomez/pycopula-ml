@@ -1,0 +1,68 @@
+site_name: pycopula-ml
+site_description: Copula-based dependence modeling and probabilistic machine learning in Python.
+site_author: Enrique Gomez
+site_url: https://newtongomez.github.io/pycopula-ml/
+
+repo_name: NewtonGomez/pycopula-ml
+repo_url: https://github.com/NewtonGomez/pycopula-ml
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+
+  - Concepts:
+      - Mathematical foundations: concepts/mathematical_foundations.md
+      - Copulas: concepts/copulas.md
+      - Marginal models: concepts/marginals.md
+
+  - Copulas:
+      - Frank copula: copulas/frank_copula.md
+
+  - API Reference:
+      - Copulas: api/copulas.md
+
+  - References:
+      - Bibliography: references/references.md
