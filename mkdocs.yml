@@ -56,7 +56,6 @@ nav:
   - Concepts:
       - Mathematical foundations: concepts/mathematical_foundations.md
       - Copulas: concepts/copulas.md
-      - Marginal models: concepts/marginals.md
 
   - Copulas:
       - Frank copula: copulas/frank_copula.md
