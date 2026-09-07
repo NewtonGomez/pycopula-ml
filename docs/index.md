@@ -20,11 +20,6 @@ $$
 
 through bivariate copulas.
 
-## Contents
-
-### Getting Started
-
-- [Development workflow](getting-started/development.md)
 
 ### Concepts
 
