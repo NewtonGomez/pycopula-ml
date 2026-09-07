@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/</loc>
+         <lastmod>2026-09-07</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/api/copulas/</loc>
+         <lastmod>2026-09-07</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/api/marginals/</loc>
+         <lastmod>2026-09-07</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/concepts/copulas/</loc>
+         <lastmod>2026-09-07</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/concepts/mathematical_foundations/</loc>
+         <lastmod>2026-09-07</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/copulas/frank_copula/</loc>
+         <lastmod>2026-09-07</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/references/references/</loc>
+         <lastmod>2026-09-07</lastmod>
+    </url>
+</urlset>
