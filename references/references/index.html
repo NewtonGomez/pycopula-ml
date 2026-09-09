@@ -801,6 +801,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SciPy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimation-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimation terminology
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -876,6 +898,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SciPy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estimation-terminology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimation terminology
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -908,9 +952,12 @@
 <li>dependence modeling.</li>
 </ul>
 <h2 id="copula-graphical-neural-networks">Copula graphical neural networks<a class="headerlink" href="#copula-graphical-neural-networks" title="Permanent link">&para;</a></h2>
-<p>The project also uses the CopulaGNN literature as broader context for combining copulas, dependence modeling, and graph-based machine learning.</p>
+<p>The project also uses the CopulaGNN literature as broader context for combining
+copulas, dependence modeling, and graph-based machine learning.</p>
 <h2 id="mlcopula">MLCOPULA<a class="headerlink" href="#mlcopula" title="Permanent link">&para;</a></h2>
-<p>The semester project is motivated by the R package <strong>MLCOPULA</strong> and the objective of reproducing and modernizing its copula-based classification workflow in Python.</p>
+<p>The semester project is motivated by the R package <strong>MLCOPULA</strong> and the
+objective of reproducing and modernizing its copula-based classification
+workflow in Python.</p>
 <p>As implementation parity progresses, this documentation should record:</p>
 <ul>
 <li>R source function;</li>
@@ -920,6 +967,38 @@
 <li>test fixtures;</li>
 <li>version of the R package used as reference.</li>
 </ul>
+<h2 id="scipy">SciPy<a class="headerlink" href="#scipy" title="Permanent link">&para;</a></h2>
+<p>SciPy provides the numerical and statistical backend used by several parts of
+the package.</p>
+<p>Marginal modeling relies on functionality such as:</p>
+<ul>
+<li><code>distribution.fit</code>;</li>
+<li><code>distribution.pdf</code>;</li>
+<li><code>distribution.logpdf</code>;</li>
+<li><code>distribution.cdf</code>;</li>
+<li><code>distribution.support</code>;</li>
+<li><code>scipy.stats.kstest</code>;</li>
+<li><code>scipy.stats.rankdata</code>.</li>
+</ul>
+<p>The parameter-estimation layer currently relies internally on:</p>
+<ul>
+<li><code>scipy.optimize.minimize_scalar</code>.</li>
+</ul>
+<p>The public package API intentionally wraps these capabilities instead of
+exposing SciPy implementation details as part of the main user workflow.</p>
+<h2 id="estimation-terminology">Estimation terminology<a class="headerlink" href="#estimation-terminology" title="Permanent link">&para;</a></h2>
+<p>For copula fitting, the package documentation distinguishes between:</p>
+<ul>
+<li>likelihood based on exact transformed uniforms under known marginals; and</li>
+<li>pseudo-likelihood based on estimated or rank-derived pseudo-observations.</li>
+</ul>
+<p>The numerical objective has the same computational form,</p>
+<div class="arithmatex">\[
+\ell(\theta)
+=
+\sum_i \log c_\theta(u_i,v_i),
+\]</div>
+<p>but the statistical interpretation depends on how <span class="arithmatex">\(u_i,v_i\)</span> were obtained.</p>
 
 
 

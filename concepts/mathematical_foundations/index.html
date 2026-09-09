@@ -570,10 +570,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#future-maximum-likelihood-estimation" class="md-nav__link">
+  <a href="#maximum-likelihood-estimation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Future maximum-likelihood estimation
+        Maximum-likelihood estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-pseudo-observations-must-stay-inside-the-open-unit-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why pseudo-observations must stay inside the open unit interval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copula-likelihood-and-pseudo-likelihood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copula likelihood and pseudo-likelihood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disjoint-parameter-spaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disjoint parameter spaces
       
     </span>
   </a>
@@ -1000,10 +1033,43 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#future-maximum-likelihood-estimation" class="md-nav__link">
+  <a href="#maximum-likelihood-estimation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Future maximum-likelihood estimation
+        Maximum-likelihood estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-pseudo-observations-must-stay-inside-the-open-unit-interval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why pseudo-observations must stay inside the open unit interval
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copula-likelihood-and-pseudo-likelihood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Copula likelihood and pseudo-likelihood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disjoint-parameter-spaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disjoint parameter spaces
       
     </span>
   </a>
@@ -1131,14 +1197,15 @@ c(u,v)
 <div class="arithmatex">\[
 \log c(u,v).
 \]</div>
-<p>It is not a different distribution. It is the same density represented on a logarithmic scale.</p>
+<p>It is not a different distribution. It is the same density represented on a
+logarithmic scale.</p>
 <p>The package names this operation <code>logpdf()</code>.</p>
 <h2 id="likelihood">Likelihood<a class="headerlink" href="#likelihood" title="Permanent link">&para;</a></h2>
-<p>Given independent observations</p>
+<p>Given paired observations</p>
 <div class="arithmatex">\[
 (u_1,v_1),\ldots,(u_n,v_n),
 \]</div>
-<p>the copula likelihood is</p>
+<p>the copula likelihood for a parameter <span class="arithmatex">\(\theta\)</span> is</p>
 <div class="arithmatex">\[
 L(\theta)
 =
@@ -1152,20 +1219,92 @@ c_\theta(u_i,v_i).
 \sum_{i=1}^n
 \log c_\theta(u_i,v_i).
 \]</div>
-<p>This form is preferred computationally because it converts products into sums and reduces numerical underflow.</p>
-<h2 id="future-maximum-likelihood-estimation">Future maximum-likelihood estimation<a class="headerlink" href="#future-maximum-likelihood-estimation" title="Permanent link">&para;</a></h2>
-<p>The future estimator will solve</p>
+<p>This form is preferred computationally because it converts products into sums
+and reduces numerical underflow.</p>
+<p>In the package:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">copula</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</code></pre></div>
+<p>returns this summed log-density for the current copula parameter.</p>
+<h2 id="maximum-likelihood-estimation">Maximum-likelihood estimation<a class="headerlink" href="#maximum-likelihood-estimation" title="Permanent link">&para;</a></h2>
+<p>The current scalar estimator solves</p>
 <div class="arithmatex">\[
 \widehat\theta
 =
-\arg\max_\theta
+\operatorname*{argmax}_\theta
 \ell(\theta).
 \]</div>
-<p>Equivalently, numerical optimizers can minimize</p>
+<p>The implementation uses a numerical minimizer on the equivalent objective</p>
 <div class="arithmatex">\[
+Q(\theta)
+=
 -\ell(\theta).
 \]</div>
-<p>This is the next major statistical component planned for the package.</p>
+<p>Therefore,</p>
+<div class="arithmatex">\[
+\widehat\theta
+=
+\operatorname*{argmin}_\theta
+[-\ell(\theta)].
+\]</div>
+<p>In code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fit_copula_mle</span><span class="p">(</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">CopulaClass</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">u</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">v</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">),</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">theta_hat</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">theta</span>
+</code></pre></div>
+<h2 id="why-pseudo-observations-must-stay-inside-the-open-unit-interval">Why pseudo-observations must stay inside the open unit interval<a class="headerlink" href="#why-pseudo-observations-must-stay-inside-the-open-unit-interval" title="Permanent link">&para;</a></h2>
+<p>A copula CDF is defined on</p>
+<div class="arithmatex">\[
+[0,1]^2.
+\]</div>
+<p>However, likelihood estimation uses the copula density and log-density.</p>
+<p>For numerical fitting, the estimator requires</p>
+<div class="arithmatex">\[
+0&lt;u_i&lt;1,
+\qquad
+0&lt;v_i&lt;1.
+\]</div>
+<p>Rank-based pseudo-observations use</p>
+<div class="arithmatex">\[
+u_i=\frac{R_i}{n+1},
+\]</div>
+<p>which naturally avoids the exact upper boundary <span class="arithmatex">\(1\)</span>.</p>
+<h2 id="copula-likelihood-and-pseudo-likelihood">Copula likelihood and pseudo-likelihood<a class="headerlink" href="#copula-likelihood-and-pseudo-likelihood" title="Permanent link">&para;</a></h2>
+<p>If the marginal distributions are known and <span class="arithmatex">\(U,V\)</span> are exact transformed
+uniform variables, maximizing</p>
+<div class="arithmatex">\[
+\sum_i\log c_\theta(u_i,v_i)
+\]</div>
+<p>is ordinary copula maximum likelihood.</p>
+<p>If the transformations are estimated from the same sample, especially through
+ranks, the same objective is commonly called a copula pseudo-likelihood.</p>
+<p>The current estimator maximizes the supplied copula log-likelihood without
+trying to determine which marginal-estimation strategy generated <span class="arithmatex">\(u\)</span> and
+<span class="arithmatex">\(v\)</span>.</p>
+<h2 id="disjoint-parameter-spaces">Disjoint parameter spaces<a class="headerlink" href="#disjoint-parameter-spaces" title="Permanent link">&para;</a></h2>
+<p>A numerical optimizer normally searches a continuous bounded interval.</p>
+<p>Some copula families require more than one search interval.</p>
+<p>For Frank,</p>
+<div class="arithmatex">\[
+\theta\in\mathbb R\setminus\{0\}.
+\]</div>
+<p>The two regions</p>
+<div class="arithmatex">\[
+\theta&lt;0
+\]</div>
+<p>and</p>
+<div class="arithmatex">\[
+\theta&gt;0
+\]</div>
+<p>can therefore be searched independently.</p>
+<p>The estimator compares the optimized log-likelihoods from both regions and
+selects the better result.</p>
 
 
 

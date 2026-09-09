@@ -396,6 +396,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -405,8 +428,19 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#copulas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -416,8 +450,41 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#marginals" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Marginals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing and Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#api-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -427,8 +494,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -436,6 +503,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -850,6 +922,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Contents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -859,8 +954,19 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#copulas" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -870,8 +976,41 @@
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#marginals" class="md-nav__link">
+    <span class="md-ellipsis">
       
-        <li class="md-nav__item">
+        Marginals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estimation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing and Validation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#api-reference" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -881,8 +1020,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -890,6 +1029,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -914,32 +1058,77 @@
 
 
 <h1 id="pycopula-ml-documentation">pycopula-ml documentation<a class="headerlink" href="#pycopula-ml-documentation" title="Permanent link">&para;</a></h1>
-<p>This directory documents the current architecture, mathematical foundations, implemented API, testing strategy, and development roadmap of <strong>pycopula-ml</strong>.</p>
-<p>The project currently concentrates on the two transformations required before a copula-based classifier can be constructed:</p>
+<p>This directory documents the current architecture, mathematical foundations,
+implemented API, testing strategy, and development roadmap of
+<strong>pycopula-ml</strong>.</p>
+<p>The current statistical workflow has three main stages:</p>
 <div class="arithmatex">\[
-X
+X,Y
 \rightarrow
-U
+U,V
 \]</div>
-<p>through marginal modeling, and</p>
+<p>through marginal modeling or rank-based pseudo-observations,</p>
 <div class="arithmatex">\[
-(U,V)
+(U,V,\theta)
 \rightarrow
 C_\theta(u,v)
 \]</div>
-<p>through bivariate copulas.</p>
+<p>through a bivariate copula, and</p>
+<div class="arithmatex">\[
+(U,V)
+\rightarrow
+\widehat{\theta}
+\]</div>
+<p>through numerical parameter estimation.</p>
+<p>The current implementation includes:</p>
+<ul>
+<li>marginal models and marginal model selection;</li>
+<li>rank-based pseudo-observations;</li>
+<li>the bivariate Frank copula;</li>
+<li>copula CDF, density, log-density, and log-likelihood evaluation;</li>
+<li>scalar maximum-likelihood estimation through <code>fit_copula_mle()</code>;</li>
+<li>support for disjoint parameter-search intervals;</li>
+<li>deterministic unit tests and statistical validation workflows.</li>
+</ul>
+<h2 id="contents">Contents<a class="headerlink" href="#contents" title="Permanent link">&para;</a></h2>
+<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="getting-started/development/">Development workflow</a></li>
+</ul>
 <h3 id="concepts">Concepts<a class="headerlink" href="#concepts" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="concepts/mathematical_foundations/">Mathematical foundations</a></li>
 <li><a href="concepts/copulas/">Copulas</a></li>
+<li><a href="concepts/marginals/">Marginal models</a></li>
+<li><a href="concepts/estimation/">Parameter estimation</a></li>
+</ul>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="architecture/architecture/">Project architecture</a></li>
 </ul>
 <h3 id="copulas">Copulas<a class="headerlink" href="#copulas" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="copulas/frank_copula/">Frank copula</a></li>
 </ul>
+<h3 id="marginals">Marginals<a class="headerlink" href="#marginals" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="marginals/empirical_marginals/">Empirical marginals</a></li>
+<li><a href="marginals/parametric_marginals/">Parametric marginals</a></li>
+<li><a href="marginals/model_selection/">Marginal model selection</a></li>
+</ul>
+<h3 id="estimation">Estimation<a class="headerlink" href="#estimation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="estimation/maximum_likelihood/">Maximum-likelihood estimation</a></li>
+</ul>
+<h3 id="testing-and-validation">Testing and Validation<a class="headerlink" href="#testing-and-validation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="testing/estimation_validation/">Estimation testing and statistical validation</a></li>
+</ul>
 <h3 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="api/copulas/">Copula API</a></li>
+<li><a href="api/marginals/">Marginal API</a></li>
+<li><a href="api/estimation/">Estimation API</a></li>
 </ul>
 <h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h3>
 <ul>

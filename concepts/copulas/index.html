@@ -575,6 +575,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parameter-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -944,6 +955,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#parameter-estimation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -966,18 +988,26 @@
 
 <h1 id="copulas">Copulas<a class="headerlink" href="#copulas" title="Permanent link">&para;</a></h1>
 <h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
-<p>The <code>pycopula_ml.copulas</code> package models dependence after marginal variables have been transformed to the unit interval.</p>
-<p>Inputs are therefore expected to satisfy
-$$
+<p>The <code>pycopula_ml.copulas</code> package models dependence after marginal variables
+have been transformed to the unit interval.</p>
+<p>For CDF and density evaluation, copula inputs belong to</p>
+<div class="arithmatex">\[
 u,v\in[0,1].
-$$
-Original measurements <span class="arithmatex">\(X,Y\)</span> should not be passed directly to a copula unless they are already uniform.</p>
+\]</div>
+<p>For parameter estimation through log-likelihood, the current estimation layer
+requires pseudo-observations strictly inside</p>
+<div class="arithmatex">\[
+0&lt;u,v&lt;1.
+\]</div>
+<p>Original measurements <span class="arithmatex">\(X,Y\)</span> should not be passed directly to a copula unless
+they are already uniform.</p>
 <h2 id="public-hierarchy">Public hierarchy<a class="headerlink" href="#public-hierarchy" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>BivariateCopula
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── FrankCopula
 </code></pre></div>
 <h2 id="bivariatecopula"><code>BivariateCopula</code><a class="headerlink" href="#bivariatecopula" title="Permanent link">&para;</a></h2>
-<p>The abstract base class defines a common interface for continuous bivariate copulas.</p>
+<p>The abstract base class defines a common interface for continuous bivariate
+copulas.</p>
 <p>Required subclass implementations:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">cdf</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">pdf</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
@@ -989,9 +1019,11 @@ Original measurements <span class="arithmatex">\(X,Y\)</span> should not be pass
 <p>The default <code>logpdf()</code> can be computed as</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
 </code></pre></div>
-<p>but subclasses may override it with a direct analytical expression for numerical stability.</p>
+<p>but subclasses may override it with a direct analytical expression for
+numerical stability.</p>
 <h2 id="common-input-preparation">Common input preparation<a class="headerlink" href="#common-input-preparation" title="Permanent link">&para;</a></h2>
-<p><code>BivariateCopula._prepare_inputs()</code> performs common validation before family-specific mathematics is evaluated.</p>
+<p><code>BivariateCopula._prepare_inputs()</code> performs common validation before
+family-specific mathematics is evaluated.</p>
 <p>It:</p>
 <ol>
 <li>converts inputs to NumPy floating-point arrays;</li>
@@ -1002,14 +1034,22 @@ Original measurements <span class="arithmatex">\(X,Y\)</span> should not be pass
 <p>This logic belongs in the base class because it applies to all copula families.</p>
 <p>Family-specific parameter restrictions remain in each subclass.</p>
 <h2 id="sample-log-likelihood">Sample log-likelihood<a class="headerlink" href="#sample-log-likelihood" title="Permanent link">&para;</a></h2>
-<p>The generic sample log-likelihood is</p>
+<p>For a copula parameterized by <span class="arithmatex">\(\theta\)</span>, the generic sample log-likelihood is</p>
 <div class="arithmatex">\[
-\ell
+\ell(\theta)
 =
-\sum_i \log c(u_i,v_i).
+\sum_i \log c_\theta(u_i,v_i).
 \]</div>
-<p>This operation is general across continuous copula families.</p>
 <p>The density itself changes by family; the likelihood construction does not.</p>
+<p>This common method is the interface used by the estimation layer:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>fit_copula_mle()
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>        ↓
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>copula(theta=candidate)
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>        ↓
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>log_likelihood(u, v)
+</code></pre></div>
+<p>The copula class therefore contains the probability model, while
+<code>pycopula_ml.estimation</code> contains the numerical fitting strategy.</p>
 <h2 id="current-family-support">Current family support<a class="headerlink" href="#current-family-support" title="Permanent link">&para;</a></h2>
 <p>Implemented:</p>
 <ul>
@@ -1025,6 +1065,26 @@ Original measurements <span class="arithmatex">\(X,Y\)</span> should not be pass
 <li>Independence</li>
 <li>later Student-t and additional families</li>
 </ul>
+<h2 id="parameter-estimation">Parameter estimation<a class="headerlink" href="#parameter-estimation" title="Permanent link">&para;</a></h2>
+<p>Copula objects are instantiated with known parameters:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">copula</span> <span class="o">=</span> <span class="n">FrankCopula</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+</code></pre></div>
+<p>When the parameter is unknown, use the estimation package instead:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fit_copula_mle</span><span class="p">(</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">FrankCopula</span><span class="p">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">u</span><span class="p">,</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="n">v</span><span class="p">,</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="n">bounds</span><span class="o">=</span><span class="p">(</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>        <span class="p">(</span><span class="o">-</span><span class="mf">50.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e-6</span><span class="p">),</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">),</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="p">),</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="p">)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="n">theta_hat</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">theta</span>
+</code></pre></div>
+<p>This avoids placing optimizer-specific logic inside <code>FrankCopula</code>.</p>
 
 
 

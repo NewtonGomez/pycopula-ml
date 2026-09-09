@@ -630,6 +630,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sample-log-likelihood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample log-likelihood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#numerical-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -652,10 +663,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#parameter-estimation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Parameter estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-workflow-from-original-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete workflow from original data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-evaluation-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct evaluation example
       
     </span>
   </a>
@@ -923,6 +956,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sample-log-likelihood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample log-likelihood
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#numerical-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -945,10 +989,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#parameter-estimation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Parameter estimation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-workflow-from-original-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Complete workflow from original data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-evaluation-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Direct evaluation example
       
     </span>
   </a>
@@ -1007,7 +1073,8 @@ e^{-\theta}-1
 <div class="arithmatex">\[
 \theta\in\mathbb R\setminus\{0\}.
 \]</div>
-<p>Positive <span class="arithmatex">\(\theta\)</span> represents positive dependence and negative <span class="arithmatex">\(\theta\)</span> represents negative dependence.</p>
+<p>Positive <span class="arithmatex">\(\theta\)</span> represents positive dependence and negative <span class="arithmatex">\(\theta\)</span>
+represents negative dependence.</p>
 <p>Independence is obtained as the limiting case</p>
 <div class="arithmatex">\[
 \theta\to0.
@@ -1051,26 +1118,117 @@ c_\theta(u,v)
 (1-e^{-\theta u})(1-e^{-\theta v})
 \right|.
 \]</div>
-<p>Direct log-density evaluation is useful because MLE works with sums of log-densities.</p>
+<p>Direct log-density evaluation is useful because parameter estimation works with
+sums of log-densities.</p>
+<h2 id="sample-log-likelihood">Sample log-likelihood<a class="headerlink" href="#sample-log-likelihood" title="Permanent link">&para;</a></h2>
+<p>For paired pseudo-observations</p>
+<div class="arithmatex">\[
+(u_1,v_1),\ldots,(u_n,v_n),
+\]</div>
+<p>the Frank sample log-likelihood is</p>
+<div class="arithmatex">\[
+\ell(\theta)
+=
+\sum_{i=1}^{n}
+\log c_\theta(u_i,v_i).
+\]</div>
+<p>The class exposes this through:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">copula</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</code></pre></div>
+<p>when <code>copula</code> is a <code>FrankCopula</code> instantiated at a specific candidate
+<span class="arithmatex">\(\theta\)</span>.</p>
 <h2 id="numerical-implementation">Numerical implementation<a class="headerlink" href="#numerical-implementation" title="Permanent link">&para;</a></h2>
 <p>The implementation uses NumPy operations such as:</p>
 <ul>
 <li><code>np.expm1(x)</code> for <span class="arithmatex">\(e^x-1\)</span>;</li>
 <li><code>np.log1p(x)</code> for <span class="arithmatex">\(\log(1+x)\)</span>.</li>
 </ul>
-<p>These forms improve accuracy near zero.</p>
+<p>These forms improve numerical accuracy near zero.</p>
 <h2 id="parameter-validation">Parameter validation<a class="headerlink" href="#parameter-validation" title="Permanent link">&para;</a></h2>
-<p><code>theta=0</code> is rejected by the direct implementation because the formula contains <span class="arithmatex">\(1/\theta\)</span>.</p>
-<p>The mathematical limit at zero corresponds to the independence copula but is not yet implemented as a special branch.</p>
-<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">copula</span> <span class="o">=</span> <span class="n">FrankCopula</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">cdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">pdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">logpdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<p><code>theta=0</code> is rejected by the direct implementation because the formula contains
+<span class="arithmatex">\(1/\theta\)</span>.</p>
+<p>The mathematical limit at zero corresponds to the independence copula but is
+not currently represented by <code>FrankCopula(theta=0)</code>.</p>
+<h2 id="parameter-estimation">Parameter estimation<a class="headerlink" href="#parameter-estimation" title="Permanent link">&para;</a></h2>
+<p>When <span class="arithmatex">\(\theta\)</span> is unknown, use the estimation layer.</p>
+<p>Because Frank excludes exactly zero, search the negative and positive parameter
+regions separately:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fit_copula_mle</span><span class="p">(</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">FrankCopula</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">u</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">v</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">bounds</span><span class="o">=</span><span class="p">(</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="p">(</span><span class="o">-</span><span class="mf">50.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e-6</span><span class="p">),</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">),</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="p">),</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">theta_hat</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">theta</span>
+</code></pre></div>
+<p>Internally, each candidate value is evaluated through</p>
+<div class="arithmatex">\[
+-\ell(\theta),
+\]</div>
+<p>and the best successful interval is selected.</p>
+<p>The final result reports the statistical log-likelihood directly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
+</code></pre></div>
+<p>For Frank:</p>
+<ul>
+<li><code>result.theta &gt; 0</code> indicates positive dependence;</li>
+<li><code>result.theta &lt; 0</code> indicates negative dependence;</li>
+<li>an estimate numerically close to zero indicates approximate independence.</li>
+</ul>
+<h2 id="complete-workflow-from-original-data">Complete workflow from original data<a class="headerlink" href="#complete-workflow-from-original-data" title="Permanent link">&para;</a></h2>
+<p>For raw paired measurements:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.marginals</span><span class="w"> </span><span class="kn">import</span> <span class="n">bivariate_pseudo_observations</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">bivariate_pseudo_observations</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fit_copula_mle</span><span class="p">(</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">FrankCopula</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">u</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">v</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">bounds</span><span class="o">=</span><span class="p">(</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="p">(</span><span class="o">-</span><span class="mf">50.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e-6</span><span class="p">),</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">),</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="p">),</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="n">fitted_copula</span> <span class="o">=</span> <span class="n">FrankCopula</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
+</code></pre></div>
+<p>This separates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>x, y
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  ↓
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>marginal/rank transformation
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  ↓
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>u, v
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  ↓
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>MLE
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  ↓
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>theta_hat
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  ↓
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>fitted FrankCopula
+</code></pre></div>
+<h2 id="direct-evaluation-example">Direct evaluation example<a class="headerlink" href="#direct-evaluation-example" title="Permanent link">&para;</a></h2>
+<p>If <span class="arithmatex">\(\theta\)</span> is already known:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">copula</span> <span class="o">=</span> <span class="n">FrankCopula</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">cdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">pdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">logpdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="mathematical-tests">Mathematical tests<a class="headerlink" href="#mathematical-tests" title="Permanent link">&para;</a></h2>
 <p>The test suite checks properties including:</p>
@@ -1100,6 +1258,8 @@ c(u,v)&gt;0,
 =
 \log(\operatorname{pdf}(u,v)).
 \]</div>
+<p>The estimation layer is tested separately so failures in numerical fitting can
+be distinguished from failures in the Frank probability formulas.</p>
 
 
 

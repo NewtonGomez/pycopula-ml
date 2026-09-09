@@ -2,30 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://newtongomez.github.io/pycopula-ml/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-09</lastmod>
     </url>
     <url>
          <loc>https://newtongomez.github.io/pycopula-ml/api/copulas/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/api/estimation/</loc>
+         <lastmod>2026-09-09</lastmod>
     </url>
     <url>
          <loc>https://newtongomez.github.io/pycopula-ml/api/marginals/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/architecture/architecture/</loc>
+         <lastmod>2026-09-09</lastmod>
     </url>
     <url>
          <loc>https://newtongomez.github.io/pycopula-ml/concepts/copulas/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/concepts/estimation/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/concepts/marginals/</loc>
+         <lastmod>2026-09-09</lastmod>
     </url>
     <url>
          <loc>https://newtongomez.github.io/pycopula-ml/concepts/mathematical_foundations/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-09</lastmod>
     </url>
     <url>
          <loc>https://newtongomez.github.io/pycopula-ml/copulas/frank_copula/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/estimation/maximum_likelihood/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/getting-started/development/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/marginals/empirical_marginals/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/marginals/model_selection/</loc>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/marginals/parametric_marginals/</loc>
+         <lastmod>2026-09-09</lastmod>
     </url>
     <url>
          <loc>https://newtongomez.github.io/pycopula-ml/references/references/</loc>
-         <lastmod>2026-09-07</lastmod>
+         <lastmod>2026-09-09</lastmod>
+    </url>
+    <url>
+         <loc>https://newtongomez.github.io/pycopula-ml/testing/estimation_validation/</loc>
+         <lastmod>2026-09-09</lastmod>
     </url>
 </urlset>
