@@ -4,47 +4,23 @@ This example illustrates a complete bivariate fitting workflow:
 
 1. define two paired samples ``x`` and ``y``;
 2. transform them into pseudo-observations ``u`` and ``v``;
-3. define the negative log-likelihood objective;
-4. optimize the objective over the positive and negative Frank parameter
-   domains separately; and
-5. select the parameter estimate with the smallest negative log-likelihood.
+3. maximize the Frank copula log-likelihood over the negative and positive
+   parameter domains; and
+4. report the estimated dependence parameter and association direction.
 
 The Frank independence case corresponds to the limiting value ``theta -> 0``.
-Because ``theta = 0`` is excluded from the numerical search, the optimization
-is performed on intervals immediately to either side of zero.
+Because ``theta = 0`` is excluded from the numerical search, both sides of
+zero are searched separately.
 """
 
 import numpy as np
-from scipy import optimize
 
 from pycopula_ml.copulas import FrankCopula
+from pycopula_ml.estimation import fit_copula_mle
 from pycopula_ml.marginals import bivariate_pseudo_observations
 
 
-def negative_log_likelihood(theta, u, v):
-    """Return the negative Frank copula log-likelihood for a candidate theta.
-
-    Parameters
-    ----------
-    theta : float
-        Candidate Frank dependence parameter. Values close to zero represent
-        the limiting independence case, but zero itself is not evaluated.
-    u : numpy.ndarray
-        Pseudo-observations for the first variable, with values in ``(0, 1)``.
-    v : numpy.ndarray
-        Pseudo-observations for the second variable, with values in ``(0, 1)``.
-
-    Returns
-    -------
-    float
-        Negative log-likelihood. Minimizing this quantity is equivalent to
-        maximizing the copula log-likelihood.
-    """
-    copula = FrankCopula(theta=theta)
-    return -copula.log_likelihood(u, v)
-
-
-def main():
+def main() -> None:
     """Estimate theta and report the direction of the fitted association."""
     x = np.array(
         [
@@ -108,35 +84,31 @@ def main():
 
     u, v = bivariate_pseudo_observations(x, y)
 
-    result_positive = optimize.minimize_scalar(
-        negative_log_likelihood,
-        args=(u, v),
-        bounds=(1e-6, 50.0),
-        method="bounded",
-    )
-    result_negative = optimize.minimize_scalar(
-        negative_log_likelihood,
-        args=(u, v),
-        bounds=(-50.0, -1e-6),
-        method="bounded",
+    result = fit_copula_mle(
+        FrankCopula,
+        u,
+        v,
+        bounds=(
+            (-50.0, -1e-6),
+            (1e-6, 50.0),
+        ),
     )
 
-    best_result = min(
-        (result_positive, result_negative),
-        key=lambda result: result.fun,
-    )
-    theta_hat = best_result.x
+    theta_hat = result.theta
 
     if np.isclose(theta_hat, 0.0, atol=1e-4):
         association = "approximately independent"
-    elif theta_hat > 0:
+    elif theta_hat > 0.0:
         association = "positive"
     else:
         association = "negative"
 
     print(f"Association: {association}")
-    print(f"theta_hat: {theta_hat}")
-    print(f"log-likelihood: {-best_result.fun}")
+    print(f"theta_hat: {theta_hat:.8f}")
+    print(f"log-likelihood: {result.log_likelihood:.8f}")
+    print(f"observations: {result.n_obs}")
+    print(f"selected interval: {result.interval}")
+    print(f"optimizer evaluations: {result.nfev}")
 
 
 if __name__ == "__main__":

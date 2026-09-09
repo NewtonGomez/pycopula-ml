@@ -14,9 +14,9 @@ is performed on intervals immediately to either side of zero.
 """
 
 import numpy as np
-from scipy import optimize
 
 from pycopula_ml.copulas import FrankCopula
+from pycopula_ml.estimation import fit_copula_mle
 
 def negative_log_likelihood(theta, u, v):
     """Return the negative Frank copula log-likelihood for a candidate theta.
@@ -59,24 +59,17 @@ if __name__ == "__main__":
         0.230769, 0.038462, 0.269231, 0.730769, 0.692308
     ])
 
-    result_positive = optimize.minimize_scalar(
-        negative_log_likelihood,
-        args=(u, v),
-        bounds=(1e-6, 50.0),
-        method="bounded",
-    )
-    result_negative = optimize.minimize_scalar(
-        negative_log_likelihood,
-        args=(u, v),
-        bounds=(-50.0, -1e-6),
-        method="bounded",
+    result = fit_copula_mle(
+        FrankCopula,
+        u,
+        v,
+        bounds=(
+            (-50.0, -1e-6),
+            (1e-6, 50.0),
+        ),
     )
 
-    best_result = min(
-        (result_positive, result_negative),
-        key=lambda result: result.fun,
-    )
-    theta_hat = best_result.x
+    theta_hat = result.theta
 
     if np.isclose(theta_hat, 0.0, atol=1e-4):
         association = "approximately independent"
@@ -87,4 +80,4 @@ if __name__ == "__main__":
 
     print(f"Association: {association}")
     print(f"theta_hat: {theta_hat}")
-    print(f"log-likelihood: {-best_result.fun}")
+    print(f"log-likelihood: {-result.log_likelihood}")

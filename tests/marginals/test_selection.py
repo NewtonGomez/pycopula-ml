@@ -18,9 +18,7 @@ class BrokenDistribution:
     @staticmethod
     def fit(values, **kwargs):
         """Raise an intentional fitting error."""
-        raise ValueError(
-            "Intentional fitting failure."
-        )
+        raise ValueError("Intentional fitting failure.")
 
 
 class TestMarginalSelectorInitialization:
@@ -39,9 +37,7 @@ class TestMarginalSelectorInitialization:
         criterion: str,
     ) -> None:
         """Supported criteria should initialize successfully."""
-        selector = MarginalSelector(
-            criterion=criterion
-        )
+        selector = MarginalSelector(criterion=criterion)
 
         assert selector.criterion == criterion
 
@@ -50,9 +46,7 @@ class TestMarginalSelectorInitialization:
     ) -> None:
         """Unsupported selection criteria should be rejected."""
         with pytest.raises(ValueError):
-            MarginalSelector(
-                criterion="invalid"
-            )
+            MarginalSelector(criterion="invalid")
 
     def test_selector_is_initially_unfitted(self) -> None:
         """A new selector should not contain a selected model."""
@@ -95,10 +89,7 @@ class TestMarginalSelectorFit:
         assert selector.selected_model_ is not None
         assert selector.selected_result_ is not None
 
-        assert (
-            selector.selected_result_.distribution
-            == "normal"
-        )
+        assert selector.selected_result_.distribution == "normal"
 
     def test_results_are_sorted_by_aic(self) -> None:
         """AIC selection should sort results from lowest to highest AIC."""
@@ -117,18 +108,11 @@ class TestMarginalSelectorFit:
             ]
         )
 
-        selector = MarginalSelector(
-            criterion="aic"
-        ).fit(x)
+        selector = MarginalSelector(criterion="aic").fit(x)
 
-        aic_values = [
-            result.aic
-            for result in selector.results_
-        ]
+        aic_values = [result.aic for result in selector.results_]
 
-        assert aic_values == sorted(
-            aic_values
-        )
+        assert aic_values == sorted(aic_values)
 
         assert selector.selected_result_ is not None
 
@@ -154,18 +138,11 @@ class TestMarginalSelectorFit:
             ]
         )
 
-        selector = MarginalSelector(
-            criterion="bic"
-        ).fit(x)
+        selector = MarginalSelector(criterion="bic").fit(x)
 
-        bic_values = [
-            result.bic
-            for result in selector.results_
-        ]
+        bic_values = [result.bic for result in selector.results_]
 
-        assert bic_values == sorted(
-            bic_values
-        )
+        assert bic_values == sorted(bic_values)
 
         assert selector.selected_result_ is not None
 
@@ -191,18 +168,11 @@ class TestMarginalSelectorFit:
             ]
         )
 
-        selector = MarginalSelector(
-            criterion="ks"
-        ).fit(x)
+        selector = MarginalSelector(criterion="ks").fit(x)
 
-        ks_values = [
-            result.ks_statistic
-            for result in selector.results_
-        ]
+        ks_values = [result.ks_statistic for result in selector.results_]
 
-        assert ks_values == sorted(
-            ks_values
-        )
+        assert ks_values == sorted(ks_values)
 
         assert selector.selected_result_ is not None
 
@@ -248,10 +218,7 @@ class TestMarginalSelectorFit:
 
         selector = MarginalSelector().fit(x)
 
-        assert (
-            selector.best_model_
-            is selector.selected_model_
-        )
+        assert selector.best_model_ is selector.selected_model_
 
     def test_best_result_alias_matches_selected_result(
         self,
@@ -269,10 +236,7 @@ class TestMarginalSelectorFit:
 
         selector = MarginalSelector().fit(x)
 
-        assert (
-            selector.best_result_
-            is selector.selected_result_
-        )
+        assert selector.best_result_ is selector.selected_result_
 
 
 class TestMarginalSelectorTransform:
@@ -325,17 +289,13 @@ class TestMarginalSelectorTransform:
             ),
         ]
 
-        selector_a = MarginalSelector(
-            candidates=candidates
-        )
+        selector_a = MarginalSelector(candidates=candidates)
 
         selector_a.fit(x)
 
         expected = selector_a.transform(x)
 
-        selector_b = MarginalSelector(
-            candidates=candidates
-        )
+        selector_b = MarginalSelector(candidates=candidates)
 
         result = selector_b.fit_transform(x)
 
@@ -351,9 +311,7 @@ class TestMarginalSelectorTransform:
         selector = MarginalSelector()
 
         with pytest.raises(RuntimeError):
-            selector.transform(
-                [1.0, 2.0, 3.0]
-            )
+            selector.transform([1.0, 2.0, 3.0])
 
     def test_ranking_before_fit_raises_runtime_error(
         self,
@@ -400,9 +358,7 @@ class TestMarginalSelectorDiagnostics:
         ).fit(x)
 
         assert any(
-            "sample is small"
-            in warning.lower()
-            for warning in selector.warnings_
+            "sample is small" in warning.lower() for warning in selector.warnings_
         )
 
     def test_large_sample_does_not_generate_small_sample_warning(
@@ -426,9 +382,7 @@ class TestMarginalSelectorDiagnostics:
         ).fit(x)
 
         assert not any(
-            "sample is small"
-            in warning.lower()
-            for warning in selector.warnings_
+            "sample is small" in warning.lower() for warning in selector.warnings_
         )
 
     def test_failed_candidate_is_recorded(self) -> None:
@@ -462,10 +416,7 @@ class TestMarginalSelectorDiagnostics:
 
         assert selector.selected_result_ is not None
 
-        assert (
-            selector.selected_result_.distribution
-            == "normal"
-        )
+        assert selector.selected_result_.distribution == "normal"
 
     def test_summary_contains_selection_information(
         self,
