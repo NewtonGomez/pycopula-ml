@@ -2,13 +2,24 @@
 
 ## Purpose
 
-The `pycopula_ml.copulas` package models dependence after marginal variables have been transformed to the unit interval.
+The `pycopula_ml.copulas` package models dependence after marginal variables
+have been transformed to the unit interval.
 
-Inputs are therefore expected to satisfy
+For CDF and density evaluation, copula inputs belong to
+
 $$
 u,v\in[0,1].
 $$
-Original measurements \(X,Y\) should not be passed directly to a copula unless they are already uniform.
+
+For parameter estimation through log-likelihood, the current estimation layer
+requires pseudo-observations strictly inside
+
+$$
+0<u,v<1.
+$$
+
+Original measurements \(X,Y\) should not be passed directly to a copula unless
+they are already uniform.
 
 ## Public hierarchy
 
@@ -19,7 +30,8 @@ BivariateCopula
 
 ## `BivariateCopula`
 
-The abstract base class defines a common interface for continuous bivariate copulas.
+The abstract base class defines a common interface for continuous bivariate
+copulas.
 
 Required subclass implementations:
 
@@ -41,11 +53,13 @@ The default `logpdf()` can be computed as
 np.log(self.pdf(u, v))
 ```
 
-but subclasses may override it with a direct analytical expression for numerical stability.
+but subclasses may override it with a direct analytical expression for
+numerical stability.
 
 ## Common input preparation
 
-`BivariateCopula._prepare_inputs()` performs common validation before family-specific mathematics is evaluated.
+`BivariateCopula._prepare_inputs()` performs common validation before
+family-specific mathematics is evaluated.
 
 It:
 
@@ -60,17 +74,28 @@ Family-specific parameter restrictions remain in each subclass.
 
 ## Sample log-likelihood
 
-The generic sample log-likelihood is
+For a copula parameterized by \(\theta\), the generic sample log-likelihood is
 
 $$
-\ell
+\ell(\theta)
 =
-\sum_i \log c(u_i,v_i).
+\sum_i \log c_\theta(u_i,v_i).
 $$
-
-This operation is general across continuous copula families.
 
 The density itself changes by family; the likelihood construction does not.
+
+This common method is the interface used by the estimation layer:
+
+```text
+fit_copula_mle()
+        ↓
+copula(theta=candidate)
+        ↓
+log_likelihood(u, v)
+```
+
+The copula class therefore contains the probability model, while
+`pycopula_ml.estimation` contains the numerical fitting strategy.
 
 ## Current family support
 
@@ -87,3 +112,31 @@ Planned:
 - Gaussian
 - Independence
 - later Student-t and additional families
+
+## Parameter estimation
+
+Copula objects are instantiated with known parameters:
+
+```python
+copula = FrankCopula(theta=2.0)
+```
+
+When the parameter is unknown, use the estimation package instead:
+
+```python
+from pycopula_ml.estimation import fit_copula_mle
+
+result = fit_copula_mle(
+    FrankCopula,
+    u,
+    v,
+    bounds=(
+        (-50.0, -1e-6),
+        (1e-6, 50.0),
+    ),
+)
+
+theta_hat = result.theta
+```
+
+This avoids placing optimizer-specific logic inside `FrankCopula`.

@@ -50,13 +50,18 @@ A subclass can override it with a numerically stable analytical expression.
 
 ### `log_likelihood(u, v)`
 
-Evaluate
+Evaluate the sample copula log-likelihood
 
 $$
 \ell
 =
 \sum_i\log c(u_i,v_i).
 $$
+
+This method evaluates the likelihood at the parameter already stored in the
+copula instance.
+
+Parameter search itself belongs to `pycopula_ml.estimation`.
 
 ### `_prepare_inputs(u, v)`
 
@@ -98,7 +103,7 @@ logpdf(u, v)
 log_likelihood(u, v)
 ```
 
-## Example
+## Example: known parameter
 
 ```python
 import numpy as np
@@ -116,3 +121,28 @@ print(copula.pdf(u, v))
 print(copula.logpdf(u, v))
 print(copula.log_likelihood(u, v))
 ```
+
+## Example: unknown parameter
+
+Use the estimation API rather than placing optimization logic inside the
+copula class:
+
+```python
+from pycopula_ml.copulas import FrankCopula
+from pycopula_ml.estimation import fit_copula_mle
+
+
+result = fit_copula_mle(
+    FrankCopula,
+    u,
+    v,
+    bounds=(
+        (-50.0, -1e-6),
+        (1e-6, 50.0),
+    ),
+)
+
+copula = FrankCopula(theta=result.theta)
+```
+
+See [Estimation API](estimation.md).
