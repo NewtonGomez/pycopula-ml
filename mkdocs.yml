@@ -53,15 +53,28 @@ extra_javascript:
 nav:
   - Home: index.md
 
+  - Getting Started:
+      - Development workflow: getting-started/development.md
+
   - Concepts:
       - Mathematical foundations: concepts/mathematical_foundations.md
       - Copulas: concepts/copulas.md
+      - Marginal models: concepts/marginals.md
+
+  - Architecture:
+      - Project architecture: architecture/architecture.md
 
   - Copulas:
       - Frank copula: copulas/frank_copula.md
 
+  - Marginals:
+      - Empirical marginals: marginals/empirical_marginals.md
+      - Parametric marginals: marginals/parametric_marginals.md
+      - Marginal model selection: marginals/model_selection.md
+
   - API Reference:
       - Copulas: api/copulas.md
+      - Marginals: api/marginals.md
 
   - References:
       - Bibliography: references/references.md
