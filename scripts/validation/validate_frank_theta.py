@@ -40,7 +40,7 @@ import numpy as np
 from scipy.optimize import minimize_scalar
 from statsmodels.distributions.copula.api import FrankCopula as SMFrankCopula
 
-from pycopula_ml.copulas.frank import FrankCopula
+from pycopula_ml.copulas.parametric.frank import FrankCopula
 
 
 @dataclass

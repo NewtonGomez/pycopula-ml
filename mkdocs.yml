@@ -65,7 +65,14 @@ nav:
       - Project architecture: architecture/architecture.md
 
   - Copulas:
-      - Frank copula: copulas/frank_copula.md
+      - Parametric copulas:
+          - Overview: copulas/parametrics/index.md
+          - Frank copula: copulas/parametrics/frank.md
+          - Clayton copula: copulas/parametrics/clayton.md
+          - Gaussian copula: copulas/parametrics/gaussian.md
+          - Joe copula: copulas/parametrics/joe.md
+          - Gumbel-Hougaard copula: copulas/parametrics/gumbel.md
+          - Ali-Mikhail-Haq copula: copulas/parametrics/ali_mikhail_haq.md
 
   - Marginals:
       - Empirical marginals: marginals/empirical_marginals.md

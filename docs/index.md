@@ -34,7 +34,11 @@ The current implementation includes:
 
 - marginal models and marginal model selection;
 - rank-based pseudo-observations;
-- the bivariate Frank copula;
+- parametric bivariate copulas:
+  Frank, Clayton, Gaussian, Joe, Gumbel-Hougaard,
+  and Ali-Mikhail-Haq;
+- a common parametric copula interface with explicit
+  independence handling;
 - copula CDF, density, log-density, and log-likelihood evaluation;
 - scalar maximum-likelihood estimation through `fit_copula_mle()`;
 - support for disjoint parameter-search intervals;
@@ -59,7 +63,13 @@ The current implementation includes:
 
 ### Copulas
 
-- [Frank copula](copulas/frank_copula.md)
+- [Parametric copulas overview](copulas/parametrics/index.md)
+- [Frank copula](copulas/parametrics/frank.md)
+- [Clayton copula](copulas/parametrics/clayton.md)
+- [Gaussian copula](copulas/parametrics/gaussian.md)
+- [Joe copula](copulas/parametrics/joe.md)
+- [Gumbel-Hougaard copula](copulas/parametrics/gumbel.md)
+- [Ali-Mikhail-Haq copula](copulas/parametrics/ali_mikhail_haq.md)
 
 ### Marginals
 

@@ -12,7 +12,7 @@ The script is intended as a minimal usage example for inspecting the behavior
 of a fitted or manually specified Frank copula.
 """
 
-from pycopula_ml.copulas.frank import FrankCopula
+from pycopula_ml.copulas.parametric.frank import FrankCopula
 
 
 def main():

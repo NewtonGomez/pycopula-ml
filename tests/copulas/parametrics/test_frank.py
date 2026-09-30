@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from pycopula_ml.copulas.frank import FrankCopula
+from pycopula_ml.copulas.parametric.frank import FrankCopula
 
 
 class TestFrankCopulaInitialization:

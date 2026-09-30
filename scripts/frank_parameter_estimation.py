@@ -14,32 +14,10 @@ is performed on intervals immediately to either side of zero.
 """
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 from pycopula_ml.copulas import FrankCopula
 from pycopula_ml.estimation import fit_copula_mle
-
-def negative_log_likelihood(theta, u, v):
-    """Return the negative Frank copula log-likelihood for a candidate theta.
-
-    Parameters
-    ----------
-    theta : float
-        Candidate Frank dependence parameter. Values close to zero represent
-        the limiting independence case, but zero itself is not evaluated.
-    u : numpy.ndarray
-        Pseudo-observations for the first variable, with values in ``(0, 1)``.
-    v : numpy.ndarray
-        Pseudo-observations for the second variable, with values in ``(0, 1)``.
-
-    Returns
-    -------
-    float
-        Negative log-likelihood. Minimizing this quantity is equivalent to
-        maximizing the copula log-likelihood.
-    """
-    copula = FrankCopula(theta=theta)
-    return -copula.log_likelihood(u, v)
-
 
 if __name__ == "__main__":
     """Estimate theta and report the direction of the fitted association."""
@@ -78,6 +56,18 @@ if __name__ == "__main__":
     else:
         association = "negative"
 
-    print(f"Association: {association}")
-    print(f"theta_hat: {theta_hat}")
-    print(f"log-likelihood: {-result.log_likelihood}")
+    #print(f"Association: {association}")
+    #print(f"theta_hat: {theta_hat}")
+    #print(f"log-likelihood: {-result.log_likelihood}")
+
+    copula = FrankCopula(theta=0)
+    from time import time
+    t0 = time()
+    res_pdf = copula.pdf(u, v)
+    res_cdf = copula.cdf(u, v)
+    t1 = time()
+    print(res_pdf)
+    print(res_cdf)
+    print(f"minimo: {min(res_pdf)}")
+    print(f"maximo: {max(res_pdf)}")
+    print(f"tiempo {float(t1- t0):.2e} segundos")

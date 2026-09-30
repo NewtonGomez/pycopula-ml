@@ -1,17 +1,31 @@
 """
 Copula probability models.
 
-This package contains the copula models implemented by pycopula-ml.
+This package contains the copula models implemented by :mod:`pycopula_lm`.
 
-All continuous bivariate copulas derive from
-:class:`BivariateCopula`, which defines the common interface for CDF,
-PDF, log-PDF, and log-likelihood evaluation.
+All continuous bivariate copulas derive from :class:`BivariateCopula`, which
+defines the common interface for CDF, PDF, log-PDF, and log-likelihood
+evaluation.
 """
 
 from .base import BivariateCopula
-from .frank import FrankCopula
+from .parametrics import (
+    AliMikhailHaqCopula,
+    ClaytonCopula,
+    FrankCopula,
+    GaussianCopula,
+    GumbelCopula,
+    JoeCopula,
+    ParametricBivariateCopula,
+)
 
 __all__ = [
     "BivariateCopula",
+    "ParametricBivariateCopula",
+    "AliMikhailHaqCopula",
+    "ClaytonCopula",
     "FrankCopula",
+    "GaussianCopula",
+    "GumbelCopula",
+    "JoeCopula",
 ]
