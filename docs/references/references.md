@@ -1,72 +1,26 @@
 # References
 
+The following resources provide background on the statistical methods used
+by this library. They are not required for installation.
+
 ## Copulas and bivariate distributions
 
-Balakrishnan, N., & Lai, C.-D. (2009).  
-*Continuous Bivariate Distributions, Second Edition*. Springer.
+Balakrishnan, N., & Lai, C.-D. (2009). *Continuous Bivariate Distributions*
+(2nd ed.). Springer. https://doi.org/10.1007/b101765
 
-Relevant topics include:
+Nelsen, R. B. (2006). *An Introduction to Copulas* (2nd ed.). Springer.
 
-- bivariate copulas;
-- continuous bivariate distributions;
-- Frank distribution/copula;
-- dependence modeling.
+## Information theory
 
-## Copula graphical neural networks
+Cover, T. M., & Thomas, J. A. (2006). *Elements of Information Theory*
+(2nd ed.). Wiley.
 
-The project also uses the CopulaGNN literature as broader context for combining
-copulas, dependence modeling, and graph-based machine learning.
+## Numerical computation
 
-## MLCOPULA
+SciPy documentation: https://docs.scipy.org/doc/scipy/
 
-The semester project is motivated by the R package **MLCOPULA** and the
-objective of reproducing and modernizing its copula-based classification
-workflow in Python.
+NumPy documentation: https://numpy.org/doc/stable/
 
-As implementation parity progresses, this documentation should record:
-
-- R source function;
-- corresponding Python component;
-- whether behavior is directly reproduced or intentionally redesigned;
-- numerical differences;
-- test fixtures;
-- version of the R package used as reference.
-
-## SciPy
-
-SciPy provides the numerical and statistical backend used by several parts of
-the package.
-
-Marginal modeling relies on functionality such as:
-
-- `distribution.fit`;
-- `distribution.pdf`;
-- `distribution.logpdf`;
-- `distribution.cdf`;
-- `distribution.support`;
-- `scipy.stats.kstest`;
-- `scipy.stats.rankdata`.
-
-The parameter-estimation layer currently relies internally on:
-
-- `scipy.optimize.minimize_scalar`.
-
-The public package API intentionally wraps these capabilities instead of
-exposing SciPy implementation details as part of the main user workflow.
-
-## Estimation terminology
-
-For copula fitting, the package documentation distinguishes between:
-
-- likelihood based on exact transformed uniforms under known marginals; and
-- pseudo-likelihood based on estimated or rank-derived pseudo-observations.
-
-The numerical objective has the same computational form,
-
-$$
-\ell(\theta)
-=
-\sum_i \log c_\theta(u_i,v_i),
-$$
-
-but the statistical interpretation depends on how \(u_i,v_i\) were obtained.
+The library uses SciPy statistical distributions and numerical optimization.
+Its mutual-information routines use analytical expressions where available
+and numerical integration for other supported continuous copulas.

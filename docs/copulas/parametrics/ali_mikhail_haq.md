@@ -2,29 +2,29 @@
 
 The Ali-Mikhail-Haq (AMH) copula is
 
-\[
+$$
 C_\theta(u,v)
 =
 \frac{uv}{
 1-\theta(1-u)(1-v)
 },
-\]
+$$
 
 with
 
-\[
+$$
 -1\le\theta<1.
-\]
+$$
 
 Let
 
-\[
+$$
 d=1-\theta(1-u)(1-v).
-\]
+$$
 
 The density is
 
-\[
+$$
 c_\theta(u,v)
 =
 \frac{
@@ -35,20 +35,20 @@ c_\theta(u,v)
 }{
 d^3
 }.
-\]
+$$
 
 ## Independence
 
-\[
+$$
 \theta=0
 \quad\Longrightarrow\quad
 C(u,v)=uv,\qquad c(u,v)=1.
-\]
+$$
 
 ## Example
 
 ```python
-from pycopula_lm.copulas import AliMikhailHaqCopula
+from pycopula_ml.copulas import AliMikhailHaqCopula
 
 copula = AliMikhailHaqCopula(theta=0.5)
 

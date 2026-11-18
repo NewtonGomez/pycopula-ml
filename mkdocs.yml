@@ -54,12 +54,15 @@ nav:
   - Home: index.md
 
   - Getting Started:
+      - Quick start: getting-started/quickstart.md
       - Development workflow: getting-started/development.md
 
   - Concepts:
       - Mathematical foundations: concepts/mathematical_foundations.md
       - Copulas: concepts/copulas.md
       - Marginal models: concepts/marginals.md
+      - Parameter estimation: concepts/estimation.md
+      - Dependence measures: concepts/dependence.md
 
   - Architecture:
       - Project architecture: architecture/architecture.md
@@ -79,9 +82,36 @@ nav:
       - Parametric marginals: marginals/parametric_marginals.md
       - Marginal model selection: marginals/model_selection.md
 
+  - Estimation:
+      - Maximum-likelihood estimation: estimation/maximum_likelihood.md
+
+  - Model Selection:
+      - Copula selection and criteria: model-selection/selection.md
+
+  - Dependence:
+      - Mutual information: dependence/mutual_information.md
+      - Pairwise weight matrices: dependence/weight_matrices.md
+
+  - Graphs:
+      - Chain graphs: graphs/chain.md
+      - MST graphs: graphs/mst.md
+
+  - Examples:
+      - Dependence examples: examples/dependence.md
+      - Chain construction: examples/chain.md
+      - MST construction: examples/mst.md
+
+  - Testing and Validation:
+      - Parameter estimation: testing/estimation_validation.md
+      - Dependence: testing/dependence_validation.md
+      - Graphs: testing/graph_validation.md
+
   - API Reference:
       - Copulas: api/copulas.md
       - Marginals: api/marginals.md
+      - Estimation: api/estimation.md
+      - Dependence: api/dependence.md
+      - Graphs: api/graphs.md
 
   - References:
       - Bibliography: references/references.md

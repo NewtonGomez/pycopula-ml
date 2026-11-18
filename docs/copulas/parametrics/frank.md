@@ -121,11 +121,16 @@ These forms improve numerical accuracy near zero.
 
 ## Parameter validation
 
-`theta=0` is rejected by the direct implementation because the formula contains
-\(1/\theta\).
+Although the analytical formula is undefined at `theta=0`, the implementation
+handles its continuous independence limit explicitly:
 
-The mathematical limit at zero corresponds to the independence copula but is
-not currently represented by `FrankCopula(theta=0)`.
+```python
+copula = FrankCopula(theta=0.0)
+assert copula.cdf(0.3, 0.7) == 0.21
+assert copula.pdf(0.3, 0.7) == 1.0
+assert copula.logpdf(0.3, 0.7) == 0.0
+```
+
 
 ## Parameter estimation
 

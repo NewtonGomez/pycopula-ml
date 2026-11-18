@@ -1,96 +1,69 @@
-# pycopula-ml documentation
+# pycopula-ml
 
-This directory documents the current architecture, mathematical foundations,
-implemented API, testing strategy, and development roadmap of
-**pycopula-ml**.
+**pycopula-ml** is a Python library for bivariate copula modeling,
+statistical dependence analysis, and graph construction. Its components can be
+used to develop probabilistic classification pipelines with continuous
+features.
 
-The current statistical workflow has three main stages:
+The current package provides copula families, marginal distributions,
+parameter estimation, model selection, mutual information, and graph-building
+utilities. **It does not expose a complete `fit()` / `predict()` classifier or
+train a neural network.**
 
-$$
-X,Y
-\rightarrow
-U,V
-$$
+## Features
 
-through marginal modeling or rank-based pseudo-observations,
+- **Six bivariate copula families:** Frank, Clayton, Gaussian, Joe,
+  Gumbel-Hougaard, and Ali-Mikhail-Haq.
+- **Marginal transformations:** continuous parametric marginals, empirical
+  marginals, rank-based pseudo-observations, and candidate selection.
+- **Parameter estimation:** bounded maximum likelihood, including disjoint
+  search intervals.
+- **Model selection:** AIC and BIC for fitted copula candidates.
+- **Dependence analysis:** copula-based mutual information and pairwise
+  dependence matrices.
+- **Graph construction:** maximum-mutual-information spanning trees (MST) and
+  heuristic maximum-mutual-information chains.
 
-$$
-(U,V,\theta)
-\rightarrow
-C_\theta(u,v)
-$$
+## Statistical workflow
 
-through a bivariate copula, and
+For a feature pair \((X,Y)\), marginal transforms produce uniform
+pseudo-observations \((U,V)\). A bivariate copula is then fitted by maximizing
 
-$$
-(U,V)
-\rightarrow
-\widehat{\theta}
-$$
+\[
+\widehat\theta = \operatorname*{argmax}_{\theta}
+\sum_{i=1}^{n} \log c_\theta(u_i,v_i).
+\]
 
-through numerical parameter estimation.
+A fitted copula also provides model-based mutual information:
 
-The current implementation includes:
+\[
+I_C(X;Y) = \int_0^1\!\int_0^1 c(u,v)\log c(u,v)\,du\,dv.
+\]
 
-- marginal models and marginal model selection;
-- rank-based pseudo-observations;
-- parametric bivariate copulas:
-  Frank, Clayton, Gaussian, Joe, Gumbel-Hougaard,
-  and Ali-Mikhail-Haq;
-- a common parametric copula interface with explicit
-  independence handling;
-- copula CDF, density, log-density, and log-likelihood evaluation;
-- scalar maximum-likelihood estimation through `fit_copula_mle()`;
-- support for disjoint parameter-search intervals;
-- deterministic unit tests and statistical validation workflows.
+For multiple features, pairwise estimates yield a dependence matrix that can
+be used to construct an MST or a chain. When fitting models per class, **only
+training observations from that class** should be used.
 
-## Contents
+## Documentation
 
-### Getting Started
-
+- [Quick start](getting-started/quickstart.md)
 - [Development workflow](getting-started/development.md)
-
-### Concepts
-
 - [Mathematical foundations](concepts/mathematical_foundations.md)
 - [Copulas](concepts/copulas.md)
-- [Marginal models](concepts/marginals.md)
+- [Marginals](concepts/marginals.md)
 - [Parameter estimation](concepts/estimation.md)
-
-### Architecture
-
-- [Project architecture](architecture/architecture.md)
-
-### Copulas
-
-- [Parametric copulas overview](copulas/parametrics/index.md)
-- [Frank copula](copulas/parametrics/frank.md)
-- [Clayton copula](copulas/parametrics/clayton.md)
-- [Gaussian copula](copulas/parametrics/gaussian.md)
-- [Joe copula](copulas/parametrics/joe.md)
-- [Gumbel-Hougaard copula](copulas/parametrics/gumbel.md)
-- [Ali-Mikhail-Haq copula](copulas/parametrics/ali_mikhail_haq.md)
-
-### Marginals
-
-- [Empirical marginals](marginals/empirical_marginals.md)
-- [Parametric marginals](marginals/parametric_marginals.md)
+- [Dependence measures](concepts/dependence.md)
+- [Architecture](architecture/architecture.md)
+- [Copula families](copulas/parametrics/index.md)
 - [Marginal model selection](marginals/model_selection.md)
-
-### Estimation
-
-- [Maximum-likelihood estimation](estimation/maximum_likelihood.md)
-
-### Testing and Validation
-
-- [Estimation testing and statistical validation](testing/estimation_validation.md)
-
-### API Reference
-
-- [Copula API](api/copulas.md)
-- [Marginal API](api/marginals.md)
-- [Estimation API](api/estimation.md)
-
-### References
-
+- [Copula model selection](model-selection/selection.md)
+- [Pairwise weight matrices](dependence/weight_matrices.md)
+- [Chain construction](graphs/chain.md)
+- [Maximum spanning tree](graphs/mst.md)
+- [Examples](examples/dependence.md)
+- [API reference](api/copulas.md)
+- [Testing and validation](testing/estimation_validation.md)
 - [References](references/references.md)
+
+The installed package version remains the authority for available exports and
+accepted parameters.

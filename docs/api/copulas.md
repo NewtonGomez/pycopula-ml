@@ -103,6 +103,20 @@ logpdf(u, v)
 log_likelihood(u, v)
 ```
 
+## Other parametric copula families
+
+In addition to Frank, the package documents Clayton, Gaussian, Joe,
+Gumbel-Hougaard, and Ali-Mikhail-Haq copulas. They follow the same
+`BivariateCopula` interface while imposing family-specific parameter
+domains and formulas.
+
+See the [parametric copulas overview](../copulas/parametrics/index.md) and
+individual family pages for details.
+
+A fitted bivariate copula can also be passed to
+[`mutual_information()`](dependence.md). The dependence layer is separate
+from the copula density implementations and from parameter estimation.
+
 ## Example: known parameter
 
 ```python

@@ -144,14 +144,3 @@ These warnings are diagnostic. They do not automatically invalidate a model.
 Automatic distribution selection is especially unstable when the sample is very small relative to the number of fitted parameters.
 
 The package should therefore report rather than hide this uncertainty.
-
-## Future improvements
-
-Planned selection improvements include:
-
-- AICc;
-- goodness-of-fit bootstrap;
-- diagnostic plots;
-- transformed-uniform diagnostics;
-- cross-validation where appropriate;
-- automatic support-aware candidate filtering.

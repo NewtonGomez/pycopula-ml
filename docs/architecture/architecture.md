@@ -2,29 +2,48 @@
 
 ## Objective
 
-The architecture separates four statistical responsibilities:
+The architecture separates six responsibilities:
 
 1. **marginal modeling**;
 2. **dependence modeling with copulas**;
 3. **parameter estimation**;
-4. future **classification** layers.
+4. **dependence measures and pairwise weight matrices**;
+5. **graph construction** from pairwise MI;
+6. future **classification** layers.
 
-The current package layout is:
+The package is organized into independent domains:
 
 ```text
 src/pycopula_ml/
 ├── copulas/
 │   ├── base.py
-│   └── frank.py
+│   └── parametrics/
+│       ├── base.py
+│       ├── frank.py
+│       ├── clayton.py
+│       ├── gaussian.py
+│       ├── joe.py
+│       ├── gumbel.py
+│       └── ali_mikhail_haq.py
 ├── estimation/
 │   └── maximum_likelihood.py
-└── marginals/
-    ├── base.py
-    ├── empirical.py
-    ├── parametric.py
-    ├── result.py
-    └── selection.py
+├── marginals/
+│   ├── base.py
+│   ├── empirical.py
+│   ├── parametric.py
+│   ├── result.py
+│   └── selection.py
+├── model_selection/
+│   ├── copula_selector.py
+│   └── criteria.py
+├── dependence/
+│   ├── mutual_information.py
+│   └── weight_matrix.py
+└── graphs/
+    ├── __init__.py
+    └── chain.py
 ```
+
 
 ## Statistical flow
 
@@ -107,20 +126,26 @@ interface.
 
 ```text
 BivariateCopula
-└── FrankCopula
+└── Parametric bivariate copulas
+    ├── FrankCopula
+    ├── ClaytonCopula
+    ├── GaussianCopula
+    ├── JoeCopula
+    ├── GumbelCopula
+    └── AliMikhailHaqCopula
 ```
 
-`BivariateCopula` defines common operations:
+The concrete class names and available exports depend on the active source
+version. All supported bivariate copulas share a common interface:
 
-- `cdf()`
-- `pdf()`
-- `logpdf()`
-- `log_likelihood()`
-- common input preparation and validation
+- `cdf()`;
+- `pdf()`;
+- `logpdf()`;
+- `log_likelihood()`;
+- common input preparation and validation.
 
-`FrankCopula` provides the Frank-specific formulas and parameter validation.
-
-Future families can derive from the same interface.
+The family-specific subclasses provide their probability formulas and
+parameter restrictions.
 
 ## Marginal hierarchy
 
@@ -237,6 +262,36 @@ estimation/
 
 without mixing statistical estimation with unrelated helpers.
 
+## Dependence layer
+
+The `pycopula_ml.dependence` layer consumes existing fitted copulas and MLE
+results; it does not reimplement their density formulas or numerical
+optimization.
+
+```text
+Original feature matrix
+          ↓
+Rank-based pseudo-observations U
+          ↓
+Pairwise fit_copula_mle()
+          ↓
+Fitted copula for each feature pair
+          ↓
+mutual_information()
+          ↓
+CopulaWeightMatrices (L, Theta, M, weights)
+```
+
+For supervised classification, this process is repeated for each class,
+using only its **training observations**. The returned matrices describe
+pairwise dependence between features. Maximum-spanning trees, conditional
+class scoring, and GNN architectures are not implemented by this layer.
+
+The Gaussian mutual-information branch uses a closed-form expression, while
+other continuous copulas use numerical quadrature. See
+[Copula-based mutual information](../dependence/mutual_information.md)
+and [Weight matrices](../dependence/weight_matrices.md).
+
 ## Design rule
 
 The classifier planned for later should not contain logic such as:
@@ -273,3 +328,18 @@ Presentation utilities can be added separately later.
 
 This keeps the statistical core usable from scripts, notebooks, tests,
 services, and future classifier components.
+
+## Graph-construction layer
+
+`graphs.chain.build_chain_graph()` consumes a mutual-information matrix or
+`CopulaWeightMatrices` from `dependence`. It does not fit copulas, marginal
+distributions, or a classifier. The output `ChainGraph` provides the ordered
+vertex permutation, named edges, total MI, weighted adjacency, and an
+optional bidirectional `edge_index` NumPy array for graph-learning pipelines.
+
+The graph is a **Hamiltonian path** (one connected chain), not an unconstrained
+maximum spanning tree. Both provided algorithms are heuristics. A future
+classification module may use separate chains for each class, but such a
+classifier is not implemented by the current graph-construction API.
+
+See [Chain graphs](../graphs/chain.md).

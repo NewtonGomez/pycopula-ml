@@ -25,7 +25,12 @@ they are already uniform.
 
 ```text
 BivariateCopula
-└── FrankCopula
+├── FrankCopula
+├── ClaytonCopula
+├── GaussianCopula
+├── JoeCopula
+├── GumbelCopula
+└── AliMikhailHaqCopula
 ```
 
 ## `BivariateCopula`
@@ -99,19 +104,16 @@ The copula class therefore contains the probability model, while
 
 ## Current family support
 
-Implemented:
+The package documents these parametric bivariate families:
 
-- [Frank](../copulas/frank_copula.md)
+- [Frank](../copulas/parametrics/frank.md)
+- [Clayton](../copulas/parametrics/clayton.md)
+- [Gaussian](../copulas/parametrics/gaussian.md)
+- [Joe](../copulas/parametrics/joe.md)
+- [Gumbel-Hougaard](../copulas/parametrics/gumbel.md)
+- [Ali-Mikhail-Haq](../copulas/parametrics/ali_mikhail_haq.md)
 
-Planned:
-
-- Clayton
-- Gumbel
-- Joe
-- AMH
-- Gaussian
-- Independence
-- later Student-t and additional families
+The fitted copula can also provide [mutual information](../dependence/mutual_information.md).
 
 ## Parameter estimation
 

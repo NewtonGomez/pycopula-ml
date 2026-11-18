@@ -1,6 +1,6 @@
 # Parametric bivariate copulas
 
-`pycopula_lm.copulas.parametrics` contains one-parameter bivariate copula
+`pycopula_ml.copulas.parametrics` contains one-parameter bivariate copula
 families with a common API:
 
 ```python
@@ -10,17 +10,16 @@ copula.logpdf(u, v)
 copula.log_likelihood(u, v)
 ```
 
-The public CDF, PDF, and log-PDF methods are implemented by
-`ParametricBivariateCopula`. Each family supplies its own `_cdf`, `_pdf`,
-`_logpdf`, and parameter validation.
+The public CDF, PDF, and log-PDF methods share a common parametric
+interface. Each family provides its own formulas and parameter validation.
 
 ## Independence
 
 The base class treats the family-specific independence parameter explicitly:
 
-\[
+$$
 C(u,v)=uv,\qquad c(u,v)=1,\qquad \log c(u,v)=0.
-\]
+$$
 
 This avoids numerical indeterminacies in family formulas at independence.
 
@@ -40,7 +39,7 @@ density.
 ## Importing
 
 ```python
-from pycopula_lm.copulas import (
+from pycopula_ml.copulas import (
     AliMikhailHaqCopula,
     ClaytonCopula,
     FrankCopula,

@@ -72,13 +72,13 @@ strictly inside (0, 1)
 Either one interval:
 
 ```python
-bounds=(1e-6, 50.0)
+bounds = (1e-6, 50.0)
 ```
 
 or several intervals:
 
 ```python
-bounds=(
+bounds = (
     (-50.0, -1e-6),
     (1e-6, 50.0),
 )
