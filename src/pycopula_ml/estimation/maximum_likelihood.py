@@ -34,7 +34,7 @@ from numpy.typing import ArrayLike, NDArray
 from scipy.optimize import OptimizeResult, minimize_scalar
 
 Bounds = tuple[float, float]
-BoundsInput = Union[Bounds, Sequence[Bounds]]
+BoundsInput = Union[Bounds, Sequence[Bounds]]  # noqa: UP007
 
 
 class CopulaLikelihood(Protocol):

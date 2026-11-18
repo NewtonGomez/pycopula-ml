@@ -12,9 +12,11 @@ def test_gaussian_copula_to_chain_end_to_end():
     rng = np.random.default_rng(2026)
     base = rng.normal(size=140)
     observations = np.column_stack(
-        (base + rng.normal(scale=0.1, size=140),
-         rng.normal(size=140),
-         0.8 * base + rng.normal(scale=0.2, size=140))
+        (
+            base + rng.normal(scale=0.1, size=140),
+            rng.normal(size=140),
+            0.8 * base + rng.normal(scale=0.2, size=140),
+        )
     )
     pseudo = rankdata(observations, axis=0) / (len(observations) + 1)
     matrices = build_weight_matrices(

@@ -12,8 +12,8 @@ with R's implementation on all data sets.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from collections.abc import Sequence
+from dataclasses import dataclass
 from typing import Literal
 
 import numpy as np
@@ -38,7 +38,6 @@ CHAIN_METHODS: tuple[str, ...] = (
     "greedy_random_swap",
     "greedy_inward_2opt",
 )
-
 
 
 @dataclass(frozen=True)
@@ -92,9 +91,7 @@ class ChainGraph:
         """
         n_features = len(self.feature_names)
         adjacency = np.zeros((n_features, n_features), dtype=float)
-        for i, j, edge in zip(
-            self.order[:-1], self.order[1:], self.edges, strict=True
-        ):
+        for i, j, edge in zip(self.order[:-1], self.order[1:], self.edges, strict=True):
             weight = edge.mutual_information if weighted else 1.0
             adjacency[i, j] = weight
             adjacency[j, i] = weight
@@ -145,9 +142,7 @@ def _validate_mi_matrix(
         labels = tuple(f"X{i + 1}" for i in range(n))
     else:
         labels = tuple(names)
-        if len(labels) != n or any(
-            not isinstance(x, str) or not x for x in labels
-        ):
+        if len(labels) != n or any(not isinstance(x, str) or not x for x in labels):
             raise ValueError(
                 "feature_names must be nonempty strings matching the matrix."
             )
@@ -240,9 +235,7 @@ def _two_opt(mi: NDArray[np.float64], initial: Sequence[int]) -> tuple[int, ...]
             return _canonical(order)
 
 
-def _inward_two_opt(
-    mi: NDArray[np.float64], initial: Sequence[int]
-) -> tuple[int, ...]:
+def _inward_two_opt(mi: NDArray[np.float64], initial: Sequence[int]) -> tuple[int, ...]:
     """First-improvement 2-opt, testing outermost segments before inner ones.
 
     All admissible reversals are considered, so a pass ends at a 2-opt local
@@ -268,9 +261,7 @@ def _inward_two_opt(
             return _canonical(order)
 
 
-def _swap_gain(
-    mi: NDArray[np.float64], order: Sequence[int], i: int, j: int
-) -> float:
+def _swap_gain(mi: NDArray[np.float64], order: Sequence[int], i: int, j: int) -> float:
     """Compute the exact MI change of swapping two positions in O(1) time."""
     if i == j:
         return 0.0

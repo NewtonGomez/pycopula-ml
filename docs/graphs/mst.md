@@ -73,10 +73,10 @@ mi = np.array(
 mst = build_mst_graph(mi, feature_names=["A", "B", "C", "D"])
 
 print(mst.edge_indices)  # ((1, 3), (0, 2), (2, 3))
-print(mst.total_mi)       # 24.0
-print(mst.total_cost)     # -24.0
-print(mst.edge_weights)   # [9. 8. 7.]
-print(mst.edge_costs)     # [-9. -8. -7.]
+print(mst.total_mi)  # 24.0
+print(mst.total_cost)  # -24.0
+print(mst.edge_weights)  # [9. 8. 7.]
+print(mst.edge_costs)  # [-9. -8. -7.]
 
 adjacency = mst.adjacency_matrix()
 edge_index = mst.edge_index()

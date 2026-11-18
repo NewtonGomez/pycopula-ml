@@ -36,9 +36,7 @@ def _validate_mi_matrix(
         labels = tuple(f"X{i + 1}" for i in range(n))
     else:
         labels = tuple(names)
-        if len(labels) != n or any(
-            not isinstance(x, str) or not x for x in labels
-        ):
+        if len(labels) != n or any(not isinstance(x, str) or not x for x in labels):
             raise ValueError(
                 "feature_names must be nonempty strings matching the matrix."
             )

@@ -54,14 +54,14 @@ def _prufer_score(sequence, weights):
 
 
 def test_known_matrix_outputs_and_negative_costs(example_matrix):
-    graph = build_mst_graph(
-        example_matrix, feature_names=["A", "B", "C", "D"]
-    )
+    graph = build_mst_graph(example_matrix, feature_names=["A", "B", "C", "D"])
     assert graph.feature_names == ("A", "B", "C", "D")
     assert graph.method == "kruskal"
     assert graph.edge_indices == ((1, 3), (0, 2), (2, 3))
     assert [(edge.source, edge.target) for edge in graph.edges] == [
-        ("B", "D"), ("A", "C"), ("C", "D")
+        ("B", "D"),
+        ("A", "C"),
+        ("C", "D"),
     ]
     assert graph.total_mi == pytest.approx(24.0)
     assert graph.total_cost == pytest.approx(-24.0)
@@ -149,7 +149,9 @@ def test_wrapper_uses_mutual_information_even_with_likelihood_weights():
     assert set(graph.edge_indices) == {(0, 1), (1, 2)}
     assert graph.total_mi == pytest.approx(17.0)
     assert build_mst_graph(matrices, feature_names=["a", "b", "c"]).feature_names == (
-        "a", "b", "c"
+        "a",
+        "b",
+        "c",
     )
 
 
@@ -192,10 +194,7 @@ def test_matches_global_optimum_enumerating_all_labeled_trees(n):
         mi = (mi + mi.T) / 2
         np.fill_diagonal(mi, 0)
         actual = build_mst_graph(mi)
-        optimum = max(
-            _prufer_score(seq, mi)
-            for seq in product(range(n), repeat=n - 2)
-        )
+        optimum = max(_prufer_score(seq, mi) for seq in product(range(n), repeat=n - 2))
         assert actual.total_mi == pytest.approx(optimum, abs=1e-10)
         _check_tree(actual)
 

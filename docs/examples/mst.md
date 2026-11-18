@@ -24,13 +24,13 @@ mst = build_mst_graph(mi, feature_names=labels)
 chain = build_chain_graph(mi, method="best", feature_names=labels)
 
 print(mst.edge_indices)  # ((0, 1), (0, 2), (0, 3))
-print(mst.total_mi)       # 24.0
-print(mst.total_cost)     # -24.0
-print(chain.total_mi)     # Less than 24: a chain cannot branch
+print(mst.total_mi)  # 24.0
+print(mst.total_cost)  # -24.0
+print(chain.total_mi)  # Less than 24: a chain cannot branch
 print(mst.adjacency_matrix(weighted=False))
 
 # Matrices for downstream graph-learning code:
-edge_index = mst.edge_index()          # (2, 6), both directions
+edge_index = mst.edge_index()  # (2, 6), both directions
 edge_attributes = mst.edge_attributes()  # (6, 1), positive MI values
 ```
 

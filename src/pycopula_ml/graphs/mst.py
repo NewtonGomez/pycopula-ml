@@ -168,9 +168,7 @@ def build_mst_graph(
     # Kruskal: sort transformed costs (negative mutual information).
     # The (i, j) entries guarantee deterministic tie breaking.
     cost_edges = sorted(
-        (-float(mi[i, j]), i, j)
-        for i in range(n)
-        for j in range(i + 1, n)
+        (-float(mi[i, j]), i, j) for i in range(n) for j in range(i + 1, n)
     )
 
     parent = list(range(n))

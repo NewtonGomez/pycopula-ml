@@ -115,5 +115,7 @@ def test_path_constraints_for_random_matrices():
         adj = graph.adjacency_matrix()
         np.testing.assert_allclose(np.diag(adj), 0.0)
         assert graph.total_mi == pytest.approx(
-            sum(matrix[i, j] for i, j in zip(graph.order, graph.order[1:]))
+            sum(
+                matrix[i, j] for i, j in zip(graph.order, graph.order[1:], strict=False)
+            )
         )

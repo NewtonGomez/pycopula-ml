@@ -35,7 +35,7 @@ class CopulaWeightMatrices:
 
 
 def build_weight_matrices(
-    U: ArrayLike, # noqa: N803
+    U: ArrayLike,  # noqa: N803
     copula_class: type,
     *,
     bounds: tuple,

@@ -8,7 +8,7 @@ name = "pycopula-ml"
 version = "0.1.0"
 description = "Copula-based dependence modeling and probabilistic machine learning in Python."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = "GPL-3.0-or-later"
 
 authors = [
@@ -32,7 +32,6 @@ classifiers = [
     "Intended Audience :: Education",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -53,6 +52,13 @@ dev = [
     "pytest>=8.0",
     "pytest-cov>=5.0",
     "ruff>=0.12",
+    "build>=1.2",
+]
+
+research = [
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+    "mne>=1.5",
 ]
 
 docs = [
@@ -61,6 +67,10 @@ docs = [
     "mkdocs>=1.4.0"
 ]
 
+
+[project.urls]
+Homepage = "https://github.com/NewtonGomez/pycopula-ml"
+Documentation = "https://newtongomez.github.io/pycopula-ml/"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -74,22 +84,60 @@ addopts = [
     "--strict-markers",
 ]
 
+[tool.coverage.run]
+branch = true
+source = ["pycopula_ml"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
+
 
 [tool.ruff]
+target-version = "py310"
+
 line-length = 88
-target-version = "py313"
+indent-width = 4
+
+extend-exclude = [
+    ".venv",
+    "venv",
+    "build",
+    "dist",
+    "site",
+    "*.egg-info",
+]
 
 
 [tool.ruff.lint]
 select = [
     "E",
+    "W",
     "F",
     "I",
     "N",
-    "W",
+    "UP",
+    "B",
 ]
+
+ignore = [
+    "E501",
+]
+
+fixable = ["ALL"]
+
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+known-first-party = ["pycopula_ml"]
+
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
 
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+line-ending = "auto"
+docstring-code-format = true
