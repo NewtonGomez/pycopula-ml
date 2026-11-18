@@ -50,11 +50,7 @@ class ClaytonCopula(ParametricBivariateCopula):
             invalid="ignore",
             over="ignore",
         ):
-            base = (
-                np.power(u, -self.theta)
-                + np.power(v, -self.theta)
-                - 1.0
-            )
+            base = np.power(u, -self.theta) + np.power(v, -self.theta) - 1.0
 
             return np.where(
                 base > 0.0,
@@ -84,11 +80,7 @@ class ClaytonCopula(ParametricBivariateCopula):
             log_u = np.log(u)
             log_v = np.log(v)
 
-            base = (
-                np.exp(-theta * log_u)
-                + np.exp(-theta * log_v)
-                - 1.0
-            )
+            base = np.exp(-theta * log_u) + np.exp(-theta * log_v) - 1.0
 
             result = np.full(
                 base.shape,
@@ -100,10 +92,8 @@ class ClaytonCopula(ParametricBivariateCopula):
 
             result[valid] = (
                 np.log1p(theta)
-                - (theta + 1.0)
-                * (log_u[valid] + log_v[valid])
-                + (-2.0 - 1.0 / theta)
-                * np.log(base[valid])
+                - (theta + 1.0) * (log_u[valid] + log_v[valid])
+                + (-2.0 - 1.0 / theta) * np.log(base[valid])
             )
 
         return result

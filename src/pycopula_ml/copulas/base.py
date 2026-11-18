@@ -178,9 +178,7 @@ class BivariateCopula(ABC):
         try:
             u_array, v_array = np.broadcast_arrays(u_array, v_array)
         except ValueError as exc:
-            raise ValueError(
-                "u and v must be broadcast-compatible."
-            ) from exc
+            raise ValueError("u and v must be broadcast-compatible.") from exc
 
         if not np.all(np.isfinite(u_array)):
             raise ValueError("u must contain only finite values.")
@@ -189,13 +187,9 @@ class BivariateCopula(ABC):
             raise ValueError("v must contain only finite values.")
 
         if np.any((u_array < 0.0) | (u_array > 1.0)):
-            raise ValueError(
-                "u must contain values in the interval [0, 1]."
-            )
+            raise ValueError("u must contain values in the interval [0, 1].")
 
         if np.any((v_array < 0.0) | (v_array > 1.0)):
-            raise ValueError(
-                "v must contain values in the interval [0, 1]."
-            )
+            raise ValueError("v must contain values in the interval [0, 1].")
 
         return u_array, v_array

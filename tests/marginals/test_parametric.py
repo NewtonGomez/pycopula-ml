@@ -12,9 +12,7 @@ class TestParametricMarginalInitialization:
 
     def test_distribution_name_is_detected(self) -> None:
         """The SciPy distribution name should be used by default."""
-        marginal = ParametricMarginal(
-            norm
-        )
+        marginal = ParametricMarginal(norm)
 
         assert marginal.name == "norm"
 
@@ -29,9 +27,7 @@ class TestParametricMarginalInitialization:
 
     def test_model_is_initially_unfitted(self) -> None:
         """A new marginal model should not contain fitted parameters."""
-        marginal = ParametricMarginal(
-            norm
-        )
+        marginal = ParametricMarginal(norm)
 
         assert marginal.parameters_ is None
         assert marginal.result_ is None
@@ -141,25 +137,15 @@ class TestNormalMarginal:
 
         assert result is not None
 
-        assert np.isfinite(
-            result.log_likelihood
-        )
+        assert np.isfinite(result.log_likelihood)
 
-        assert np.isfinite(
-            result.aic
-        )
+        assert np.isfinite(result.aic)
 
-        assert np.isfinite(
-            result.bic
-        )
+        assert np.isfinite(result.bic)
 
-        assert np.isfinite(
-            result.ks_statistic
-        )
+        assert np.isfinite(result.ks_statistic)
 
-        assert np.isfinite(
-            result.ks_pvalue
-        )
+        assert np.isfinite(result.ks_pvalue)
 
     def test_pdf_is_positive(self) -> None:
         """Normal fitted density should be positive at finite values."""
@@ -173,9 +159,7 @@ class TestNormalMarginal:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
         values = np.array(
             [
@@ -185,13 +169,9 @@ class TestNormalMarginal:
             ]
         )
 
-        density = marginal.pdf(
-            values
-        )
+        density = marginal.pdf(values)
 
-        assert np.all(
-            density > 0.0
-        )
+        assert np.all(density > 0.0)
 
     def test_logpdf_matches_log_of_pdf(self) -> None:
         """Direct log-PDF should equal the logarithm of the PDF."""
@@ -205,9 +185,7 @@ class TestNormalMarginal:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
         values = np.array(
             [
@@ -217,13 +195,9 @@ class TestNormalMarginal:
             ]
         )
 
-        expected = np.log(
-            marginal.pdf(values)
-        )
+        expected = np.log(marginal.pdf(values))
 
-        result = marginal.logpdf(
-            values
-        )
+        result = marginal.logpdf(values)
 
         assert np.allclose(
             result,
@@ -242,21 +216,13 @@ class TestNormalMarginal:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
-        probabilities = marginal.cdf(
-            x
-        )
+        probabilities = marginal.cdf(x)
 
-        assert np.all(
-            probabilities >= 0.0
-        )
+        assert np.all(probabilities >= 0.0)
 
-        assert np.all(
-            probabilities <= 1.0
-        )
+        assert np.all(probabilities <= 1.0)
 
     def test_cdf_is_non_decreasing(self) -> None:
         """The fitted CDF should be monotonic."""
@@ -270,9 +236,7 @@ class TestNormalMarginal:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
         values = np.linspace(
             -5.0,
@@ -280,13 +244,9 @@ class TestNormalMarginal:
             100,
         )
 
-        probabilities = marginal.cdf(
-            values
-        )
+        probabilities = marginal.cdf(values)
 
-        assert np.all(
-            np.diff(probabilities) >= 0.0
-        )
+        assert np.all(np.diff(probabilities) >= 0.0)
 
     def test_transform_returns_open_unit_interval(self) -> None:
         """Probability integral transform should avoid zero and one."""
@@ -300,9 +260,7 @@ class TestNormalMarginal:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
         u = marginal.transform(x)
 
@@ -321,9 +279,7 @@ class TestNormalMarginal:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
         assert np.isclose(
             marginal.loc_,
@@ -342,9 +298,7 @@ class TestNormalMarginal:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
         assert np.isclose(
             marginal.scale_,
@@ -363,9 +317,7 @@ class TestNormalMarginal:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
         lower, upper = marginal.support()
 
@@ -427,10 +379,7 @@ class TestGammaMarginal:
 
         assert marginal.result_ is not None
 
-        assert (
-            marginal.result_.n_parameters
-            == 2
-        )
+        assert marginal.result_.n_parameters == 2
 
     def test_gamma_support_starts_at_zero_with_fixed_loc(
         self,
@@ -461,9 +410,7 @@ class TestGammaMarginal:
             0.0,
         )
 
-        assert np.isposinf(
-            upper
-        )
+        assert np.isposinf(upper)
 
 
 class TestParametricMarginalValidation:
@@ -471,45 +418,35 @@ class TestParametricMarginalValidation:
 
     def test_pdf_before_fit_raises_runtime_error(self) -> None:
         """PDF evaluation should require a fitted model."""
-        marginal = ParametricMarginal(
-            norm
-        )
+        marginal = ParametricMarginal(norm)
 
         with pytest.raises(RuntimeError):
             marginal.pdf([1.0])
 
     def test_logpdf_before_fit_raises_runtime_error(self) -> None:
         """Log-PDF evaluation should require a fitted model."""
-        marginal = ParametricMarginal(
-            norm
-        )
+        marginal = ParametricMarginal(norm)
 
         with pytest.raises(RuntimeError):
             marginal.logpdf([1.0])
 
     def test_cdf_before_fit_raises_runtime_error(self) -> None:
         """CDF evaluation should require a fitted model."""
-        marginal = ParametricMarginal(
-            norm
-        )
+        marginal = ParametricMarginal(norm)
 
         with pytest.raises(RuntimeError):
             marginal.cdf([1.0])
 
     def test_fit_rejects_empty_sample(self) -> None:
         """An empty sample should not be fitted."""
-        marginal = ParametricMarginal(
-            norm
-        )
+        marginal = ParametricMarginal(norm)
 
         with pytest.raises(ValueError):
             marginal.fit([])
 
     def test_fit_rejects_multidimensional_sample(self) -> None:
         """Marginal fitting requires one-dimensional data."""
-        marginal = ParametricMarginal(
-            norm
-        )
+        marginal = ParametricMarginal(norm)
 
         x = np.array(
             [
@@ -523,9 +460,7 @@ class TestParametricMarginalValidation:
 
     def test_fit_rejects_nan(self) -> None:
         """Non-finite observations should be rejected."""
-        marginal = ParametricMarginal(
-            norm
-        )
+        marginal = ParametricMarginal(norm)
 
         x = np.array(
             [
@@ -560,9 +495,7 @@ class TestParametricMarginalValidation:
             ]
         )
 
-        marginal = ParametricMarginal(
-            norm
-        ).fit(x)
+        marginal = ParametricMarginal(norm).fit(x)
 
         with pytest.raises(ValueError):
             marginal.transform(

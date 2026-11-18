@@ -13,7 +13,6 @@ from ..copulas.base import BivariateCopula
 from ..estimation.maximum_likelihood import fit_copula_mle
 from .criteria import aic, bic
 
-
 Bounds: TypeAlias = tuple[float, float]
 CopulaType: TypeAlias = type[BivariateCopula]
 SelectionCriterion: TypeAlias = Literal["log_likelihood", "aic", "bic"]
@@ -101,9 +100,7 @@ def _validate_candidate_copulas(
 
     for copula, bounds in candidate_copulas.items():
         if not isinstance(copula, type) or not issubclass(copula, BivariateCopula):
-            raise TypeError(
-                "Each candidate key must be a BivariateCopula subclass."
-            )
+            raise TypeError("Each candidate key must be a BivariateCopula subclass.")
 
         if len(bounds) != 2:
             raise ValueError(
@@ -113,14 +110,11 @@ def _validate_candidate_copulas(
         lower, upper = bounds
 
         if not np.isfinite(lower) or not np.isfinite(upper):
-            raise ValueError(
-                f"Bounds for {copula.__name__} must be finite."
-            )
+            raise ValueError(f"Bounds for {copula.__name__} must be finite.")
 
         if lower >= upper:
             raise ValueError(
-                f"Lower bound must be smaller than upper bound for "
-                f"{copula.__name__}."
+                f"Lower bound must be smaller than upper bound for {copula.__name__}."
             )
 
 
@@ -142,9 +136,7 @@ def _sort_candidates(
     if criterion == "bic":
         return sorted(candidates, key=lambda candidate: candidate.bic)
 
-    raise ValueError(
-        "criterion must be one of: 'log_likelihood', 'aic', or 'bic'."
-    )
+    raise ValueError("criterion must be one of: 'log_likelihood', 'aic', or 'bic'.")
 
 
 def _print_results(
@@ -154,13 +146,7 @@ def _print_results(
     """Print a compact summary table of the fitted candidate copulas."""
     print("Copula model selection")
     print("-" * 72)
-    print(
-        f"{'Copula':<24}"
-        f"{'theta':>11}"
-        f"{'logLik':>13}"
-        f"{'AIC':>12}"
-        f"{'BIC':>12}"
-    )
+    print(f"{'Copula':<24}{'theta':>11}{'logLik':>13}{'AIC':>12}{'BIC':>12}")
     print("-" * 72)
 
     for candidate in candidates:
@@ -258,9 +244,7 @@ def copula_selector(
             )
         )
 
-    ranked_candidates = tuple(
-        _sort_candidates(candidates, criterion)
-    )
+    ranked_candidates = tuple(_sort_candidates(candidates, criterion))
 
     result = CopulaSelectionResult(
         selected=ranked_candidates[0],

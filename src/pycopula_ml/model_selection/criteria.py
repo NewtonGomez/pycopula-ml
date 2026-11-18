@@ -52,10 +52,10 @@ def aic(log_likelihood: Real, n_parameters: Integral) -> float:
 
     .. math::
 
-        \mathrm{AIC} = 2k - 2\ell(\hat{\theta}),
+        \\mathrm{AIC} = 2k - 2\\ell(\\hat{\theta}),
 
     where ``k`` is the number of free model parameters and
-    :math:`\ell(\hat{\theta})` is the maximized log-likelihood.
+    :math:`\\ell(\\hat{\theta})` is the maximized log-likelihood.
 
     Lower AIC values indicate a preferred model among models fitted to the
     same observations.
@@ -89,11 +89,11 @@ def bic(
 
     .. math::
 
-        \mathrm{BIC}
-        = k\log(n) - 2\ell(\hat{\theta}),
+        \\mathrm{BIC}
+        = k\\log(n) - 2\\ell(\\hat{\theta}),
 
     where ``k`` is the number of free model parameters, ``n`` is the number
-    of observations, and :math:`\ell(\hat{\theta})` is the maximized
+    of observations, and :math:`\\ell(\\hat{\theta})` is the maximized
     log-likelihood.
 
     For bivariate copula data, one observation corresponds to one pair
@@ -121,7 +121,4 @@ def bic(
     n_parameters = _validate_n_parameters(n_parameters)
     n_observations = _validate_n_observations(n_observations)
 
-    return (
-        n_parameters * math.log(n_observations)
-        - 2.0 * log_likelihood
-    )
+    return n_parameters * math.log(n_observations) - 2.0 * log_likelihood

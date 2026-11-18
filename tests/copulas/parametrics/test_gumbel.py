@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from pycopula_lm.copulas import GumbelCopula
+from pycopula_ml.copulas import GumbelCopula
 
 
 def test_gumbel_known_values():
@@ -12,11 +12,7 @@ def test_gumbel_known_values():
     u = np.exp(-1.0)
 
     expected_cdf = np.exp(-np.sqrt(2.0))
-    expected_pdf = (
-        np.exp(2.0 - np.sqrt(2.0))
-        * (np.sqrt(2.0) + 1.0)
-        / (2.0 ** 1.5)
-    )
+    expected_pdf = np.exp(2.0 - np.sqrt(2.0)) * (np.sqrt(2.0) + 1.0) / (2.0**1.5)
 
     assert copula.cdf(u, u) == pytest.approx(expected_cdf)
     assert copula.pdf(u, u) == pytest.approx(expected_pdf)

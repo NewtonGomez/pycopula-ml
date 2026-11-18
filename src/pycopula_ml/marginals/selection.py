@@ -10,8 +10,9 @@ true underlying distribution; it is only the preferred model among the
 candidate set under the chosen criterion.
 """
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Sequence
+from typing import Any
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
@@ -56,9 +57,7 @@ class MarginalCandidate:
 
     name: str
     distribution: Any
-    fit_kwargs: Dict[str, Any] = field(
-        default_factory=dict
-    )
+    fit_kwargs: dict[str, Any] = field(default_factory=dict)
 
 
 DEFAULT_CANDIDATES = (
@@ -128,60 +127,42 @@ class MarginalSelector:
 
     def __init__(
         self,
-        candidates: Optional[
-            Sequence[MarginalCandidate]
-        ] = None,
+        candidates: Sequence[MarginalCandidate] | None = None,
         criterion: str = "aic",
         small_sample_warning: int = 20,
         boundary_tolerance: float = 1e-6,
     ) -> None:
         if criterion not in self._CRITERION_ATTRIBUTES:
-            raise ValueError(
-                "criterion must be 'aic', 'bic', or 'ks'."
-            )
+            raise ValueError("criterion must be 'aic', 'bic', or 'ks'.")
 
         if small_sample_warning < 1:
-            raise ValueError(
-                "small_sample_warning must be at least 1."
-            )
+            raise ValueError("small_sample_warning must be at least 1.")
 
         if boundary_tolerance <= 0.0:
-            raise ValueError(
-                "boundary_tolerance must be greater than zero."
-            )
+            raise ValueError("boundary_tolerance must be greater than zero.")
 
         self.candidates = list(
-            candidates
-            if candidates is not None
-            else DEFAULT_CANDIDATES
+            candidates if candidates is not None else DEFAULT_CANDIDATES
         )
 
         self.criterion = criterion
         self.small_sample_warning = small_sample_warning
         self.boundary_tolerance = boundary_tolerance
 
-        self.selected_model_: Optional[
-            ParametricMarginal
-        ] = None
+        self.selected_model_: ParametricMarginal | None = None
 
-        self.selected_result_: Optional[
-            MarginalFitResult
-        ] = None
+        self.selected_result_: MarginalFitResult | None = None
 
-        self.results_: List[
-            MarginalFitResult
-        ] = []
+        self.results_: list[MarginalFitResult] = []
 
-        self.failed_: Dict[
+        self.failed_: dict[
             str,
             str,
         ] = {}
 
-        self.warnings_: List[str] = []
+        self.warnings_: list[str] = []
 
-        self._fitted_models: List[
-            ParametricMarginal
-        ] = []
+        self._fitted_models: list[ParametricMarginal] = []
 
     def fit(
         self,
@@ -205,9 +186,7 @@ class MarginalSelector:
         RuntimeError
             If none of the candidate distributions can be fitted.
         """
-        data = MarginalModel._prepare_sample(
-            values
-        )
+        data = MarginalModel._prepare_sample(values)
 
         self.results_ = []
         self.failed_ = {}
@@ -227,38 +206,25 @@ class MarginalSelector:
             try:
                 model.fit(data)
             except Exception as exc:
-                self.failed_[
-                    candidate.name
-                ] = str(exc)
+                self.failed_[candidate.name] = str(exc)
 
                 continue
 
             if model.result_ is None:
-                self.failed_[
-                    candidate.name
-                ] = (
+                self.failed_[candidate.name] = (
                     "The candidate did not produce a fit result."
                 )
 
                 continue
 
-            self._fitted_models.append(
-                model
-            )
+            self._fitted_models.append(model)
 
-            self.results_.append(
-                model.result_
-            )
+            self.results_.append(model.result_)
 
         if not self._fitted_models:
-            raise RuntimeError(
-                "No candidate marginal distribution "
-                "could be fitted."
-            )
+            raise RuntimeError("No candidate marginal distribution could be fitted.")
 
-        attribute = self._CRITERION_ATTRIBUTES[
-            self.criterion
-        ]
+        attribute = self._CRITERION_ATTRIBUTES[self.criterion]
 
         self._fitted_models.sort(
             key=lambda model: getattr(
@@ -274,17 +240,11 @@ class MarginalSelector:
             )
         )
 
-        self.selected_model_ = (
-            self._fitted_models[0]
-        )
+        self.selected_model_ = self._fitted_models[0]
 
-        self.selected_result_ = (
-            self.results_[0]
-        )
+        self.selected_result_ = self.results_[0]
 
-        self._collect_diagnostics(
-            data
-        )
+        self._collect_diagnostics(data)
 
         return self
 
@@ -349,7 +309,7 @@ class MarginalSelector:
 
     def ranking(
         self,
-    ) -> List[MarginalFitResult]:
+    ) -> list[MarginalFitResult]:
         """
         Return successful fits ordered by the selection criterion.
 
@@ -365,9 +325,7 @@ class MarginalSelector:
         """
         self._require_selected_model()
 
-        return list(
-            self.results_
-        )
+        return list(self.results_)
 
     def summary(self) -> str:
         """
@@ -387,14 +345,9 @@ class MarginalSelector:
         self._require_selected_model()
 
         if self.selected_result_ is None:
-            raise RuntimeError(
-                "The selector has not produced "
-                "a selected result."
-            )
+            raise RuntimeError("The selector has not produced a selected result.")
 
-        attribute = self._CRITERION_ATTRIBUTES[
-            self.criterion
-        ]
+        attribute = self._CRITERION_ATTRIBUTES[self.criterion]
 
         minimum = getattr(
             self.selected_result_,
@@ -404,14 +357,8 @@ class MarginalSelector:
         lines = [
             "Marginal distribution selection",
             "--------------------------------",
-            (
-                f"Criterion: "
-                f"{self.criterion.upper()}"
-            ),
-            (
-                f"Sample size: "
-                f"{self.selected_result_.sample_size}"
-            ),
+            (f"Criterion: {self.criterion.upper()}"),
+            (f"Sample size: {self.selected_result_.sample_size}"),
             "",
             (
                 f"{'Rank':>4}  "
@@ -432,10 +379,7 @@ class MarginalSelector:
                 attribute,
             )
 
-            delta = (
-                criterion_value
-                - minimum
-            )
+            delta = criterion_value - minimum
 
             lines.append(
                 f"{rank:>4}  "
@@ -449,10 +393,7 @@ class MarginalSelector:
         lines.extend(
             [
                 "",
-                (
-                    "Selected distribution: "
-                    f"{self.selected_result_.distribution}"
-                ),
+                (f"Selected distribution: {self.selected_result_.distribution}"),
                 (
                     "Selection reason: lowest "
                     f"{self.criterion.upper()} "
@@ -470,9 +411,7 @@ class MarginalSelector:
             )
 
             for name, message in self.failed_.items():
-                lines.append(
-                    f"- {name}: {message}"
-                )
+                lines.append(f"- {name}: {message}")
 
         if self.warnings_:
             lines.extend(
@@ -483,18 +422,14 @@ class MarginalSelector:
             )
 
             for message in self.warnings_:
-                lines.append(
-                    f"- {message}"
-                )
+                lines.append(f"- {message}")
 
-        return "\n".join(
-            lines
-        )
+        return "\n".join(lines)
 
     @property
     def best_model_(
         self,
-    ) -> Optional[ParametricMarginal]:
+    ) -> ParametricMarginal | None:
         """
         Return the selected marginal model.
 
@@ -514,7 +449,7 @@ class MarginalSelector:
     @property
     def best_result_(
         self,
-    ) -> Optional[MarginalFitResult]:
+    ) -> MarginalFitResult | None:
         """
         Return diagnostics for the selected marginal model.
 
@@ -542,9 +477,7 @@ class MarginalSelector:
             If the selector has not been fitted.
         """
         if self.selected_model_ is None:
-            raise RuntimeError(
-                "The selector must be fitted before use."
-            )
+            raise RuntimeError("The selector must be fitted before use.")
 
         return self.selected_model_
 
@@ -577,20 +510,13 @@ class MarginalSelector:
 
         lower, upper = model.support()
 
-        data_min = float(
-            np.min(data)
-        )
+        data_min = float(np.min(data))
 
-        data_max = float(
-            np.max(data)
-        )
+        data_max = float(np.max(data))
 
-        if (
-            np.isfinite(lower)
-            and self._is_close_to_boundary(
-                lower,
-                data_min,
-            )
+        if np.isfinite(lower) and self._is_close_to_boundary(
+            lower,
+            data_min,
         ):
             self.warnings_.append(
                 "The fitted lower support boundary is "
@@ -599,12 +525,9 @@ class MarginalSelector:
                 "or unstable fit."
             )
 
-        if (
-            np.isfinite(upper)
-            and self._is_close_to_boundary(
-                upper,
-                data_max,
-            )
+        if np.isfinite(upper) and self._is_close_to_boundary(
+            upper,
+            data_max,
         ):
             self.warnings_.append(
                 "The fitted upper support boundary is "
@@ -633,15 +556,9 @@ class MarginalSelector:
         bool
             True when the values are close under the configured tolerance.
         """
-        tolerance = (
-            self.boundary_tolerance
-            * max(
-                1.0,
-                abs(observed),
-            )
+        tolerance = self.boundary_tolerance * max(
+            1.0,
+            abs(observed),
         )
 
-        return (
-            abs(boundary - observed)
-            <= tolerance
-        )
+        return abs(boundary - observed) <= tolerance

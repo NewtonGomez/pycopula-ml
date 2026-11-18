@@ -34,7 +34,7 @@ Pseudo-observations are defined here as
 where ``R_i`` is the rank of observation ``i``.
 """
 
-from typing import Literal, Optional
+from typing import Literal
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
@@ -74,15 +74,11 @@ class EmpiricalMarginal(MarginalModel):
     """
 
     def __init__(self) -> None:
-        self.sample_: Optional[
-            NDArray[np.float64]
-        ] = None
+        self.sample_: NDArray[np.float64] | None = None
 
-        self.sorted_sample_: Optional[
-            NDArray[np.float64]
-        ] = None
+        self.sorted_sample_: NDArray[np.float64] | None = None
 
-        self.n_samples_: Optional[int] = None
+        self.n_samples_: int | None = None
 
     def fit(
         self,
@@ -144,9 +140,7 @@ class EmpiricalMarginal(MarginalModel):
             If the empirical marginal has not been fitted.
         """
         sorted_sample = self._require_fitted()
-        evaluation_values = self._prepare_evaluation_values(
-            values
-        )
+        evaluation_values = self._prepare_evaluation_values(values)
 
         counts = np.searchsorted(
             sorted_sample,
@@ -206,9 +200,7 @@ class EmpiricalMarginal(MarginalModel):
             If the empirical marginal has not been fitted.
         """
         if self.sorted_sample_ is None:
-            raise RuntimeError(
-                "The empirical marginal must be fitted before use."
-            )
+            raise RuntimeError("The empirical marginal must be fitted before use.")
 
         return self.sorted_sample_
 
@@ -256,9 +248,7 @@ def pseudo_observations(
     ValueError
         If the input sample is invalid.
     """
-    data = MarginalModel._prepare_sample(
-        values
-    )
+    data = MarginalModel._prepare_sample(values)
 
     ranks = rankdata(
         data,
@@ -308,18 +298,12 @@ def bivariate_pseudo_observations(
     ValueError
         If the two samples do not contain the same number of observations.
     """
-    x_array = MarginalModel._prepare_sample(
-        x
-    )
+    x_array = MarginalModel._prepare_sample(x)
 
-    y_array = MarginalModel._prepare_sample(
-        y
-    )
+    y_array = MarginalModel._prepare_sample(y)
 
     if x_array.size != y_array.size:
-        raise ValueError(
-            "x and y must contain the same number of observations."
-        )
+        raise ValueError("x and y must contain the same number of observations.")
 
     u = pseudo_observations(
         x_array,

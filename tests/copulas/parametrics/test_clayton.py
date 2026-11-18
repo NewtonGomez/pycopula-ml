@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from pycopula_lm.copulas import ClaytonCopula
+from pycopula_ml.copulas import ClaytonCopula
 
 
 def test_clayton_known_values():

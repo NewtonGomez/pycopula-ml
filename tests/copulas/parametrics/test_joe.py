@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from pycopula_lm.copulas import JoeCopula
+from pycopula_ml.copulas import JoeCopula
 
 
 def test_joe_known_values():

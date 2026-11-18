@@ -6,7 +6,6 @@ diagnostics produced when fitting parametric marginal distributions.
 """
 
 from dataclasses import dataclass
-from typing import Tuple
 
 
 @dataclass(frozen=True)
@@ -45,7 +44,7 @@ class MarginalFitResult:
     """
 
     distribution: str
-    parameters: Tuple[float, ...]
+    parameters: tuple[float, ...]
     sample_size: int
     n_parameters: int
     log_likelihood: float

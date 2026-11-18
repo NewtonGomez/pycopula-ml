@@ -22,8 +22,7 @@ class GumbelCopula(ParametricBivariateCopula):
     def _validate_theta(self) -> None:
         if self.theta < 1.0:
             raise ValueError(
-                "theta must be greater than or equal to 1 for the "
-                "Gumbel copula."
+                "theta must be greater than or equal to 1 for the Gumbel copula."
             )
 
     def _cdf(
@@ -41,10 +40,7 @@ class GumbelCopula(ParametricBivariateCopula):
             x = -np.log(u)
             y = -np.log(v)
 
-            base = (
-                np.power(x, theta)
-                + np.power(y, theta)
-            )
+            base = np.power(x, theta) + np.power(y, theta)
 
             radial_term = np.power(
                 base,
@@ -75,10 +71,7 @@ class GumbelCopula(ParametricBivariateCopula):
             x = -np.log(u)
             y = -np.log(v)
 
-            base = (
-                np.power(x, theta)
-                + np.power(y, theta)
-            )
+            base = np.power(x, theta) + np.power(y, theta)
 
             radial_term = np.power(
                 base,
@@ -88,10 +81,8 @@ class GumbelCopula(ParametricBivariateCopula):
             return (
                 -radial_term
                 + np.log(radial_term + theta - 1.0)
-                + (1.0 / theta - 2.0)
-                * np.log(base)
-                + (theta - 1.0)
-                * (np.log(x) + np.log(y))
+                + (1.0 / theta - 2.0) * np.log(base)
+                + (theta - 1.0) * (np.log(x) + np.log(y))
                 - np.log(u)
                 - np.log(v)
             )

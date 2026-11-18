@@ -25,15 +25,15 @@ parameter regions while excluding the independence limit ``theta = 0``::
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass
-from typing import Protocol, Sequence, Tuple, Union
+from typing import Protocol, Union
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
 from scipy.optimize import OptimizeResult, minimize_scalar
 
-
-Bounds = Tuple[float, float]
+Bounds = tuple[float, float]
 BoundsInput = Union[Bounds, Sequence[Bounds]]
 
 
@@ -89,13 +89,13 @@ class CopulaFitResult:
     n_obs: int
     interval: Bounds
     raw_result: OptimizeResult
-    interval_results: Tuple[OptimizeResult, ...]
+    interval_results: tuple[OptimizeResult, ...]
 
 
 def _prepare_pseudo_observations(
     u: ArrayLike,
     v: ArrayLike,
-) -> Tuple[NDArray[np.float64], NDArray[np.float64]]:
+) -> tuple[NDArray[np.float64], NDArray[np.float64]]:
     """Validate and convert paired pseudo-observations.
 
     Pseudo-observations used in a copula likelihood must be finite, paired,
@@ -125,7 +125,7 @@ def _prepare_pseudo_observations(
     return u_array, v_array
 
 
-def _normalize_bounds(bounds: BoundsInput) -> Tuple[Bounds, ...]:
+def _normalize_bounds(bounds: BoundsInput) -> tuple[Bounds, ...]:
     """Normalize one interval or several intervals into a tuple of bounds."""
     if len(bounds) == 2 and all(np.isscalar(value) for value in bounds):
         raw_intervals = (bounds,)
@@ -139,9 +139,7 @@ def _normalize_bounds(bounds: BoundsInput) -> Tuple[Bounds, ...]:
 
     for interval in raw_intervals:
         if len(interval) != 2:
-            raise ValueError(
-                "Each parameter interval must contain exactly two values."
-            )
+            raise ValueError("Each parameter interval must contain exactly two values.")
 
         lower = float(interval[0])
         upper = float(interval[1])
@@ -241,9 +239,7 @@ def fit_copula_mle(
         results.append(result)
 
     valid_results = [
-        result
-        for result in results
-        if bool(result.success) and np.isfinite(result.fun)
+        result for result in results if bool(result.success) and np.isfinite(result.fun)
     ]
 
     if not valid_results:

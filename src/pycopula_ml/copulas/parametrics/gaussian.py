@@ -36,8 +36,7 @@ class GaussianCopula(ParametricBivariateCopula):
     def _validate_theta(self) -> None:
         if not -1.0 < self.theta < 1.0:
             raise ValueError(
-                "theta must lie strictly between -1 and 1 for the "
-                "Gaussian copula."
+                "theta must lie strictly between -1 and 1 for the Gaussian copula."
             )
 
     @property
@@ -59,24 +58,13 @@ class GaussianCopula(ParametricBivariateCopula):
         zero_mask = (u_flat <= 0.0) | (v_flat <= 0.0)
         result[zero_mask] = 0.0
 
-        u_one_mask = (
-            (u_flat >= 1.0)
-            & ~zero_mask
-        )
+        u_one_mask = (u_flat >= 1.0) & ~zero_mask
         result[u_one_mask] = v_flat[u_one_mask]
 
-        v_one_mask = (
-            (v_flat >= 1.0)
-            & ~zero_mask
-            & ~u_one_mask
-        )
+        v_one_mask = (v_flat >= 1.0) & ~zero_mask & ~u_one_mask
         result[v_one_mask] = u_flat[v_one_mask]
 
-        interior = ~(
-            zero_mask
-            | u_one_mask
-            | v_one_mask
-        )
+        interior = ~(zero_mask | u_one_mask | v_one_mask)
 
         if np.any(interior):
             points = np.column_stack(
@@ -125,14 +113,8 @@ class GaussianCopula(ParametricBivariateCopula):
             invalid="ignore",
             over="ignore",
         ):
-            quadratic_term = (
-                2.0 * rho * z_u * z_v
-                - rho**2 * (z_u**2 + z_v**2)
-            ) / (
+            quadratic_term = (2.0 * rho * z_u * z_v - rho**2 * (z_u**2 + z_v**2)) / (
                 2.0 * one_minus_rho_squared
             )
 
-            return (
-                -0.5 * np.log(one_minus_rho_squared)
-                + quadratic_term
-            )
+            return -0.5 * np.log(one_minus_rho_squared) + quadratic_term

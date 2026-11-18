@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from pycopula_ml.copulas.parametric.frank import FrankCopula
+from pycopula_ml.copulas.parametrics.frank import FrankCopula
 
 
 class TestFrankCopulaInitialization:
@@ -21,10 +21,13 @@ class TestFrankCopulaInitialization:
 
         assert copula.theta == -2.0
 
-    def test_theta_zero_raises_value_error(self) -> None:
-        """Theta equal to zero should raise a ValueError."""
-        with pytest.raises(ValueError):
-            FrankCopula(theta=0.0)
+    def test_theta_zero_represents_independence(self) -> None:
+        """Theta zero is the continuous independence limit."""
+        copula = FrankCopula(theta=0.0)
+        assert copula.is_independence
+        assert copula.cdf(0.3, 0.7) == pytest.approx(0.21)
+        assert copula.pdf(0.3, 0.7) == pytest.approx(1.0)
+        assert copula.logpdf(0.3, 0.7) == pytest.approx(0.0)
 
     @pytest.mark.parametrize(
         "theta",

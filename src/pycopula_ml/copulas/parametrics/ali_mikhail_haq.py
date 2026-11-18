@@ -25,8 +25,7 @@ class AliMikhailHaqCopula(ParametricBivariateCopula):
     def _validate_theta(self) -> None:
         if self.theta < -1.0 or self.theta >= 1.0:
             raise ValueError(
-                "theta must satisfy -1 <= theta < 1 for the "
-                "Ali-Mikhail-Haq copula."
+                "theta must satisfy -1 <= theta < 1 for the Ali-Mikhail-Haq copula."
             )
 
     def _cdf(
@@ -34,12 +33,7 @@ class AliMikhailHaqCopula(ParametricBivariateCopula):
         u: NDArray[np.float64],
         v: NDArray[np.float64],
     ) -> NDArray[np.float64]:
-        denominator = (
-            1.0
-            - self.theta
-            * (1.0 - u)
-            * (1.0 - v)
-        )
+        denominator = 1.0 - self.theta * (1.0 - u) * (1.0 - v)
 
         return u * v / denominator
 
@@ -57,30 +51,16 @@ class AliMikhailHaqCopula(ParametricBivariateCopula):
     ) -> NDArray[np.float64]:
         theta = self.theta
 
-        denominator = (
-            1.0
-            - theta
-            * (1.0 - u)
-            * (1.0 - v)
-        )
+        denominator = 1.0 - theta * (1.0 - u) * (1.0 - v)
 
         numerator = (
             1.0
-            + theta
-            * (
-                (1.0 + u) * (1.0 + v)
-                - 3.0
-            )
-            + theta**2
-            * (1.0 - u)
-            * (1.0 - v)
+            + theta * ((1.0 + u) * (1.0 + v) - 3.0)
+            + theta**2 * (1.0 - u) * (1.0 - v)
         )
 
         with np.errstate(
             divide="ignore",
             invalid="ignore",
         ):
-            return (
-                np.log(numerator)
-                - 3.0 * np.log(denominator)
-            )
+            return np.log(numerator) - 3.0 * np.log(denominator)

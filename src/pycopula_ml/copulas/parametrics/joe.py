@@ -22,8 +22,7 @@ class JoeCopula(ParametricBivariateCopula):
     def _validate_theta(self) -> None:
         if self.theta < 1.0:
             raise ValueError(
-                "theta must be greater than or equal to 1 for the "
-                "Joe copula."
+                "theta must be greater than or equal to 1 for the Joe copula."
             )
 
     def _cdf(
@@ -68,20 +67,10 @@ class JoeCopula(ParametricBivariateCopula):
             b = np.power(one_minus_v, theta)
             base = a + b - a * b
 
-            correction = (
-                theta * base
-                + (theta - 1.0)
-                * (1.0 - a)
-                * (1.0 - b)
-            )
+            correction = theta * base + (theta - 1.0) * (1.0 - a) * (1.0 - b)
 
             return (
-                (theta - 1.0)
-                * (
-                    np.log(one_minus_u)
-                    + np.log(one_minus_v)
-                )
-                + (1.0 / theta - 2.0)
-                * np.log(base)
+                (theta - 1.0) * (np.log(one_minus_u) + np.log(one_minus_v))
+                + (1.0 / theta - 2.0) * np.log(base)
                 + np.log(correction)
             )

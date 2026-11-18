@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from pycopula_lm.copulas import GaussianCopula
+from pycopula_ml.copulas import GaussianCopula
 
 
 def test_gaussian_known_values_at_center():

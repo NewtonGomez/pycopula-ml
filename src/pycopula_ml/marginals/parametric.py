@@ -9,7 +9,7 @@ The :class:`ParametricMarginal` class adds the interface and diagnostics
 required by pycopula-ml.
 """
 
-from typing import Any, Dict, Optional, Tuple
+from typing import Any
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
@@ -46,15 +46,15 @@ class ParametricMarginal(ContinuousMarginalModel):
     def __init__(
         self,
         distribution: Any,
-        name: Optional[str] = None,
-        fit_kwargs: Optional[Dict[str, Any]] = None,
+        name: str | None = None,
+        fit_kwargs: dict[str, Any] | None = None,
     ) -> None:
         self.distribution = distribution
         self.name = name or distribution.name
         self.fit_kwargs = dict(fit_kwargs or {})
 
-        self.parameters_: Optional[Tuple[float, ...]] = None
-        self.result_: Optional[MarginalFitResult] = None
+        self.parameters_: tuple[float, ...] | None = None
+        self.result_: MarginalFitResult | None = None
 
     def fit(
         self,
@@ -86,17 +86,12 @@ class ParametricMarginal(ContinuousMarginalModel):
             **self.fit_kwargs,
         )
 
-        self.parameters_ = tuple(
-            float(parameter)
-            for parameter in parameters
-        )
+        self.parameters_ = tuple(float(parameter) for parameter in parameters)
 
         if not np.all(np.isfinite(self.parameters_)):
             self.parameters_ = None
 
-            raise RuntimeError(
-                f"{self.name} produced non-finite fitted parameters."
-            )
+            raise RuntimeError(f"{self.name} produced non-finite fitted parameters.")
 
         log_density = self.distribution.logpdf(
             data,
@@ -106,26 +101,16 @@ class ParametricMarginal(ContinuousMarginalModel):
         if not np.all(np.isfinite(log_density)):
             self.parameters_ = None
 
-            raise RuntimeError(
-                f"{self.name} produced a non-finite log-likelihood."
-            )
+            raise RuntimeError(f"{self.name} produced a non-finite log-likelihood.")
 
-        log_likelihood = float(
-            np.sum(log_density)
-        )
+        log_likelihood = float(np.sum(log_density))
 
         n_parameters = self._count_free_parameters()
         sample_size = int(data.size)
 
-        aic = (
-            2.0 * n_parameters
-            - 2.0 * log_likelihood
-        )
+        aic = 2.0 * n_parameters - 2.0 * log_likelihood
 
-        bic = (
-            np.log(sample_size) * n_parameters
-            - 2.0 * log_likelihood
-        )
+        bic = np.log(sample_size) * n_parameters - 2.0 * log_likelihood
 
         ks_result = kstest(
             data,
@@ -231,7 +216,7 @@ class ParametricMarginal(ContinuousMarginalModel):
             dtype=np.float64,
         )
 
-    def support(self) -> Tuple[float, float]:
+    def support(self) -> tuple[float, float]:
         """
         Return the support of the fitted distribution.
 
@@ -242,9 +227,7 @@ class ParametricMarginal(ContinuousMarginalModel):
         """
         parameters = self._require_fitted()
 
-        shape_parameters, loc, scale = self._split_parameters(
-            parameters
-        )
+        shape_parameters, loc, scale = self._split_parameters(parameters)
 
         lower, upper = self.distribution.support(
             *shape_parameters,
@@ -271,9 +254,7 @@ class ParametricMarginal(ContinuousMarginalModel):
         """
         parameters = self._require_fitted()
 
-        _, loc, _ = self._split_parameters(
-            parameters
-        )
+        _, loc, _ = self._split_parameters(parameters)
 
         return loc
 
@@ -294,13 +275,11 @@ class ParametricMarginal(ContinuousMarginalModel):
         """
         parameters = self._require_fitted()
 
-        _, _, scale = self._split_parameters(
-            parameters
-        )
+        _, _, scale = self._split_parameters(parameters)
 
         return scale
 
-    def _require_fitted(self) -> Tuple[float, ...]:
+    def _require_fitted(self) -> tuple[float, ...]:
         """
         Return fitted parameters or raise an error.
 
@@ -315,13 +294,11 @@ class ParametricMarginal(ContinuousMarginalModel):
             If the model has not been fitted.
         """
         if self.parameters_ is None:
-            raise RuntimeError(
-                "The marginal model must be fitted before use."
-            )
+            raise RuntimeError("The marginal model must be fitted before use.")
 
         return self.parameters_
 
-    def _shape_names(self) -> Tuple[str, ...]:
+    def _shape_names(self) -> tuple[str, ...]:
         """
         Return SciPy shape-parameter names for the distribution.
 
@@ -339,15 +316,12 @@ class ParametricMarginal(ContinuousMarginalModel):
         if not shapes:
             return ()
 
-        return tuple(
-            name.strip()
-            for name in shapes.split(",")
-        )
+        return tuple(name.strip() for name in shapes.split(","))
 
     def _split_parameters(
         self,
-        parameters: Tuple[float, ...],
-    ) -> Tuple[Tuple[float, ...], float, float]:
+        parameters: tuple[float, ...],
+    ) -> tuple[tuple[float, ...], float, float]:
         """
         Split SciPy parameters into shape, location, and scale components.
 
@@ -361,17 +335,11 @@ class ParametricMarginal(ContinuousMarginalModel):
         tuple
             ``(shape_parameters, loc, scale)``.
         """
-        n_shapes = len(
-            self._shape_names()
-        )
+        n_shapes = len(self._shape_names())
 
         shape_parameters = parameters[:n_shapes]
-        loc = float(
-            parameters[n_shapes]
-        )
-        scale = float(
-            parameters[n_shapes + 1]
-        )
+        loc = float(parameters[n_shapes])
+        scale = float(parameters[n_shapes + 1])
 
         return shape_parameters, loc, scale
 
@@ -396,42 +364,27 @@ class ParametricMarginal(ContinuousMarginalModel):
 
         fixed_parameters = set()
 
-        for index, shape_name in enumerate(
-            shape_names
-        ):
+        for index, shape_name in enumerate(shape_names):
             accepted_keys = {
                 f"f{index}",
                 f"f{shape_name}",
                 f"fix_{shape_name}",
             }
 
-            if any(
-                key in self.fit_kwargs
-                for key in accepted_keys
-            ):
-                fixed_parameters.add(
-                    ("shape", index)
-                )
+            if any(key in self.fit_kwargs for key in accepted_keys):
+                fixed_parameters.add(("shape", index))
 
         if "floc" in self.fit_kwargs:
-            fixed_parameters.add(
-                ("loc", 0)
-            )
+            fixed_parameters.add(("loc", 0))
 
         if "fscale" in self.fit_kwargs:
-            fixed_parameters.add(
-                ("scale", 0)
-            )
+            fixed_parameters.add(("scale", 0))
 
-        n_free = (
-            len(parameters)
-            - len(fixed_parameters)
-        )
+        n_free = len(parameters) - len(fixed_parameters)
 
         if n_free <= 0:
             raise RuntimeError(
-                "The fitted model must contain at least one "
-                "free parameter."
+                "The fitted model must contain at least one free parameter."
             )
 
         return n_free

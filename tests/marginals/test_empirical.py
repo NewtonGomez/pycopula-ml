@@ -119,17 +119,11 @@ class TestEmpiricalMarginal:
             100,
         )
 
-        probabilities = marginal.cdf(
-            evaluation_values
-        )
+        probabilities = marginal.cdf(evaluation_values)
 
-        differences = np.diff(
-            probabilities
-        )
+        differences = np.diff(probabilities)
 
-        assert np.all(
-            differences >= 0.0
-        )
+        assert np.all(differences >= 0.0)
 
     def test_fit_transform_returns_open_interval(self) -> None:
         """ECDF transformation should avoid exact zero and one."""

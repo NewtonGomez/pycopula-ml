@@ -2,7 +2,7 @@
 
 import pytest
 
-from pycopula_lm.copulas import AliMikhailHaqCopula
+from pycopula_ml.copulas import AliMikhailHaqCopula
 
 
 def test_amh_known_values():

@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from pycopula_lm.copulas import (
+from pycopula_ml.copulas import (
     AliMikhailHaqCopula,
     ClaytonCopula,
     GaussianCopula,
@@ -114,6 +114,4 @@ def test_log_likelihood_is_sum_of_logpdf(copula_class, theta):
 
     expected = np.sum(copula.logpdf(u, v))
 
-    assert copula.log_likelihood(u, v) == pytest.approx(
-        float(expected)
-    )
+    assert copula.log_likelihood(u, v) == pytest.approx(float(expected))

@@ -16,7 +16,7 @@ class QuadraticCopula:
 
     def log_likelihood(self, u: np.ndarray, v: np.ndarray) -> float:
         del u, v
-        return -(self.theta - self.target) ** 2
+        return -((self.theta - self.target) ** 2)
 
 
 def valid_data():

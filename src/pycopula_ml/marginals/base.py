@@ -113,9 +113,7 @@ class MarginalModel(ABC):
             If ``epsilon`` is not strictly between zero and 0.5.
         """
         if not 0.0 < epsilon < 0.5:
-            raise ValueError(
-                "epsilon must be strictly between 0 and 0.5."
-            )
+            raise ValueError("epsilon must be strictly between 0 and 0.5.")
 
         probabilities = self.cdf(values)
 
@@ -157,19 +155,13 @@ class MarginalModel(ABC):
         )
 
         if array.ndim != 1:
-            raise ValueError(
-                "values must be one-dimensional."
-            )
+            raise ValueError("values must be one-dimensional.")
 
         if array.size == 0:
-            raise ValueError(
-                "values must contain at least one observation."
-            )
+            raise ValueError("values must contain at least one observation.")
 
         if not np.all(np.isfinite(array)):
-            raise ValueError(
-                "values must contain only finite observations."
-            )
+            raise ValueError("values must contain only finite observations.")
 
         return array
 
@@ -201,9 +193,7 @@ class MarginalModel(ABC):
         )
 
         if not np.all(np.isfinite(array)):
-            raise ValueError(
-                "values must contain only finite observations."
-            )
+            raise ValueError("values must contain only finite observations.")
 
         return array
 

@@ -56,9 +56,7 @@ class ParametricBivariateCopula(BivariateCopula):
         try:
             self.theta = float(self.theta)
         except (TypeError, ValueError) as exc:
-            raise TypeError(
-                "theta must be a real numeric value."
-            ) from exc
+            raise TypeError("theta must be a real numeric value.") from exc
 
         if not np.isfinite(self.theta):
             raise ValueError("theta must be finite.")
