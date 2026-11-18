@@ -12,28 +12,28 @@
         <meta name="author" content="Enrique Gomez">
       
       
-        <link rel="canonical" href="https://newtongomez.github.io/pycopula-ml/copulas/frank_copula/">
+        <link rel="canonical" href="https://newtongomez.github.io/pycopula-ml/testing/dependence_validation/">
       
       
-        <link rel="prev" href="../../architecture/architecture/">
+        <link rel="prev" href="../estimation_validation/">
       
       
-        <link rel="next" href="../../marginals/empirical_marginals/">
+        <link rel="next" href="../graph_validation/">
       
       
         
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
-        <title>Frank copula - pycopula-ml</title>
+        <title>Dependence - pycopula-ml</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#frank-copula" class="md-skip">
+        <a href="#dependence-testing-and-validation" class="md-skip">
           Skip to content
         </a>
       
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Frank copula
+              Dependence
             
           </span>
         </div>
@@ -212,7 +212,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../getting-started/development/" class="md-tabs__link">
+        <a href="../../getting-started/quickstart/" class="md-tabs__link">
           
   
   
@@ -268,13 +268,18 @@
   
   
   
+  
     
+    
+      
+  
+  
   
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../copulas/parametrics/" class="md-tabs__link">
           
   
   
@@ -282,6 +287,9 @@
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -299,6 +307,128 @@
   
   
   Marginals
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../estimation/maximum_likelihood/" class="md-tabs__link">
+          
+  
+  
+  Estimation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-selection/selection/" class="md-tabs__link">
+          
+  
+  
+  Model Selection
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dependence/mutual_information/" class="md-tabs__link">
+          
+  
+  
+  Dependence
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../graphs/chain/" class="md-tabs__link">
+          
+  
+  
+  Graphs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/dependence/" class="md-tabs__link">
+          
+  
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../estimation_validation/" class="md-tabs__link">
+          
+  
+  
+  Testing and Validation
 
         </a>
       </li>
@@ -477,6 +607,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../getting-started/quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../getting-started/development/" class="md-nav__link">
         
   
@@ -641,6 +799,62 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/estimation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/dependence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence measures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -739,31 +953,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -781,7 +990,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -796,26 +1005,33 @@
                 
   
   
+  
+  
     
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+    
+    
+    
       
       
         
       
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
           
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
     
   
-    Frank copula
+    Parametric copulas
   
 
     
@@ -823,10 +1039,56 @@
   
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Parametric copulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/frank/" class="md-nav__link">
         
   
   
@@ -842,135 +1104,153 @@
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/clayton/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
     
   
+    Clayton copula
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Definition
-      
-    </span>
-  </a>
+
+    
+  </span>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#density" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Density
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-density" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log-density
-      
-    </span>
-  </a>
+
+      </a>
+    </li>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-log-likelihood" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sample log-likelihood
-      
-    </span>
-  </a>
+
+              
+            
+              
+                
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#numerical-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Numerical implementation
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameter-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameter validation
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameter-estimation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameter estimation
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#complete-workflow-from-original-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Complete workflow from original data
-      
-    </span>
-  </a>
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/gaussian/" class="md-nav__link">
+        
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#direct-evaluation-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Direct evaluation example
-      
-    </span>
-  </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mathematical-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mathematical tests
-      
-    </span>
-  </a>
+  <span class="md-ellipsis">
+    
   
-</li>
-      
-    </ul>
+    Gaussian copula
   
-</nav>
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/joe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joe copula
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/gumbel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gumbel-Hougaard copula
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/ali_mikhail_haq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ali-Mikhail-Haq copula
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1157,7 +1437,7 @@
   <span class="md-ellipsis">
     
   
-    API Reference
+    Estimation
   
 
     
@@ -1170,6 +1450,770 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Estimation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estimation/maximum_likelihood/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maximum-likelihood estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Selection
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Model Selection
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-selection/selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copula selection and criteria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dependence
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dependence/mutual_information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dependence/weight_matrices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pairwise weight matrices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Graphs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphs/chain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chain graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphs/mst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MST graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/dependence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/chain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chain construction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/mst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MST construction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing and Validation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Testing and Validation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estimation_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unit tests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#statistical-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Statistical checks
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../graph_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1235,6 +2279,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/estimation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/dependence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/graphs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1262,10 +2390,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
             
   
   
@@ -1283,8 +2411,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1356,10 +2484,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
+  <a href="#unit-tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Definition
+        Unit tests
       
     </span>
   </a>
@@ -1367,98 +2495,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#density" class="md-nav__link">
+  <a href="#statistical-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Density
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-density" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log-density
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-log-likelihood" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Sample log-likelihood
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#numerical-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Numerical implementation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameter-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameter validation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#parameter-estimation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Parameter estimation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#complete-workflow-from-original-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Complete workflow from original data
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#direct-evaluation-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Direct evaluation example
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mathematical-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mathematical tests
+        Statistical checks
       
     </span>
   </a>
@@ -1485,214 +2525,34 @@
   
 
 
-<h1 id="frank-copula">Frank copula<a class="headerlink" href="#frank-copula" title="Permanent link">&para;</a></h1>
-<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">&para;</a></h2>
-<p>The bivariate Frank copula is</p>
-<div class="arithmatex">\[
-C_\theta(u,v)
-=
--\frac{1}{\theta}
-\ln
-\left(
-1+
-\frac{
-(e^{-\theta u}-1)(e^{-\theta v}-1)
-}{
-e^{-\theta}-1
-}
-\right),
-\]</div>
-<p>for</p>
-<div class="arithmatex">\[
-\theta\in\mathbb R\setminus\{0\}.
-\]</div>
-<p>Positive <span class="arithmatex">\(\theta\)</span> represents positive dependence and negative <span class="arithmatex">\(\theta\)</span>
-represents negative dependence.</p>
-<p>Independence is obtained as the limiting case</p>
-<div class="arithmatex">\[
-\theta\to0.
-\]</div>
-<h2 id="density">Density<a class="headerlink" href="#density" title="Permanent link">&para;</a></h2>
-<p>The copula density is</p>
-<div class="arithmatex">\[
-c_\theta(u,v)
-=
-\frac{
-\theta(1-e^{-\theta})e^{-\theta(u+v)}
-}{
-\left[
-(1-e^{-\theta})
--
-(1-e^{-\theta u})(1-e^{-\theta v})
-\right]^2
-}.
-\]</div>
-<p>It is obtained from</p>
-<div class="arithmatex">\[
-c_\theta(u,v)
-=
-\frac{\partial^2 C_\theta(u,v)}
-{\partial u\,\partial v}.
-\]</div>
-<h2 id="log-density">Log-density<a class="headerlink" href="#log-density" title="Permanent link">&para;</a></h2>
-<p>The direct log-density can be written as</p>
-<div class="arithmatex">\[
-\log c_\theta(u,v)
-=
-\log\left[
-\theta(1-e^{-\theta})
-\right]
--\theta(u+v)
--
-2\log
-\left|
-(1-e^{-\theta})
--
-(1-e^{-\theta u})(1-e^{-\theta v})
-\right|.
-\]</div>
-<p>Direct log-density evaluation is useful because parameter estimation works with
-sums of log-densities.</p>
-<h2 id="sample-log-likelihood">Sample log-likelihood<a class="headerlink" href="#sample-log-likelihood" title="Permanent link">&para;</a></h2>
-<p>For paired pseudo-observations</p>
-<div class="arithmatex">\[
-(u_1,v_1),\ldots,(u_n,v_n),
-\]</div>
-<p>the Frank sample log-likelihood is</p>
-<div class="arithmatex">\[
-\ell(\theta)
-=
-\sum_{i=1}^{n}
-\log c_\theta(u_i,v_i).
-\]</div>
-<p>The class exposes this through:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">copula</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<h1 id="dependence-testing-and-validation">Dependence testing and validation<a class="headerlink" href="#dependence-testing-and-validation" title="Permanent link">&para;</a></h1>
+<h2 id="unit-tests">Unit tests<a class="headerlink" href="#unit-tests" title="Permanent link">&para;</a></h2>
+<p>Where present in the repository, tests in <code>tests/dependence/</code> should cover:</p>
+<ol>
+<li>Exact Gaussian mutual information, including independence and sign
+   symmetry.</li>
+<li>Domain validation for Gaussian correlation parameters.</li>
+<li>Numerical integration of copula-based mutual information.</li>
+<li>Zero mutual information under independence.</li>
+<li>Shape, symmetry, and diagonal conventions of pairwise matrices.</li>
+<li>Invalid pseudo-observations, nonfinite values, and fitting failures.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/dependence<span class="w"> </span>-v
 </code></pre></div>
-<p>when <code>copula</code> is a <code>FrankCopula</code> instantiated at a specific candidate
-<span class="arithmatex">\(\theta\)</span>.</p>
-<h2 id="numerical-implementation">Numerical implementation<a class="headerlink" href="#numerical-implementation" title="Permanent link">&para;</a></h2>
-<p>The implementation uses NumPy operations such as:</p>
+<h2 id="statistical-checks">Statistical checks<a class="headerlink" href="#statistical-checks" title="Permanent link">&para;</a></h2>
 <ul>
-<li><code>np.expm1(x)</code> for <span class="arithmatex">\(e^x-1\)</span>;</li>
-<li><code>np.log1p(x)</code> for <span class="arithmatex">\(\log(1+x)\)</span>.</li>
+<li>Check family-specific mutual information at valid reference parameters.</li>
+<li>Compare quadrature orders (for example, <code>64</code>, <code>128</code>, and <code>256</code>) and report
+  convergence differences when dependence is strong.</li>
+<li>Separate estimation error from numerical integration error.</li>
+<li>Test tied ranks, constant features, and insufficient class sample sizes.</li>
+<li>Confirm that class-specific transformations do not access validation or
+  test data.</li>
+<li>Keep random seeds fixed in reproducible simulations.</li>
 </ul>
-<p>These forms improve numerical accuracy near zero.</p>
-<h2 id="parameter-validation">Parameter validation<a class="headerlink" href="#parameter-validation" title="Permanent link">&para;</a></h2>
-<p><code>theta=0</code> is rejected by the direct implementation because the formula contains
-<span class="arithmatex">\(1/\theta\)</span>.</p>
-<p>The mathematical limit at zero corresponds to the independence copula but is
-not currently represented by <code>FrankCopula(theta=0)</code>.</p>
-<h2 id="parameter-estimation">Parameter estimation<a class="headerlink" href="#parameter-estimation" title="Permanent link">&para;</a></h2>
-<p>When <span class="arithmatex">\(\theta\)</span> is unknown, use the estimation layer.</p>
-<p>Because Frank excludes exactly zero, search the negative and positive parameter
-regions separately:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fit_copula_mle</span><span class="p">(</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">FrankCopula</span><span class="p">,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">u</span><span class="p">,</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">v</span><span class="p">,</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">bounds</span><span class="o">=</span><span class="p">(</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="p">(</span><span class="o">-</span><span class="mf">50.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e-6</span><span class="p">),</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>        <span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">),</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="p">),</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">)</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">theta_hat</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">theta</span>
-</code></pre></div>
-<p>Internally, each candidate value is evaluated through</p>
-<div class="arithmatex">\[
--\ell(\theta),
-\]</div>
-<p>and the best successful interval is selected.</p>
-<p>The final result reports the statistical log-likelihood directly:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">log_likelihood</span><span class="p">)</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
-</code></pre></div>
-<p>For Frank:</p>
-<ul>
-<li><code>result.theta &gt; 0</code> indicates positive dependence;</li>
-<li><code>result.theta &lt; 0</code> indicates negative dependence;</li>
-<li>an estimate numerically close to zero indicates approximate independence.</li>
-</ul>
-<h2 id="complete-workflow-from-original-data">Complete workflow from original data<a class="headerlink" href="#complete-workflow-from-original-data" title="Permanent link">&para;</a></h2>
-<p>For raw paired measurements:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.marginals</span><span class="w"> </span><span class="kn">import</span> <span class="n">bivariate_pseudo_observations</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">bivariate_pseudo_observations</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">result</span> <span class="o">=</span> <span class="n">fit_copula_mle</span><span class="p">(</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="n">FrankCopula</span><span class="p">,</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">u</span><span class="p">,</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">v</span><span class="p">,</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">bounds</span><span class="o">=</span><span class="p">(</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="p">(</span><span class="o">-</span><span class="mf">50.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e-6</span><span class="p">),</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>        <span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">),</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="p">),</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="p">)</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="n">fitted_copula</span> <span class="o">=</span> <span class="n">FrankCopula</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">theta</span><span class="p">)</span>
-</code></pre></div>
-<p>This separates:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>x, y
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  ↓
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>marginal/rank transformation
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  ↓
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>u, v
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  ↓
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>MLE
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>  ↓
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>theta_hat
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  ↓
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>fitted FrankCopula
-</code></pre></div>
-<h2 id="direct-evaluation-example">Direct evaluation example<a class="headerlink" href="#direct-evaluation-example" title="Permanent link">&para;</a></h2>
-<p>If <span class="arithmatex">\(\theta\)</span> is already known:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">copula</span> <span class="o">=</span> <span class="n">FrankCopula</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">cdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">pdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">logpdf</span> <span class="o">=</span> <span class="n">copula</span><span class="o">.</span><span class="n">logpdf</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="mathematical-tests">Mathematical tests<a class="headerlink" href="#mathematical-tests" title="Permanent link">&para;</a></h2>
-<p>The test suite checks properties including:</p>
-<div class="arithmatex">\[
-C(u,0)=0,
-\]</div>
-<div class="arithmatex">\[
-C(0,v)=0,
-\]</div>
-<div class="arithmatex">\[
-C(u,1)=u,
-\]</div>
-<div class="arithmatex">\[
-C(1,v)=v,
-\]</div>
-<p>symmetry,</p>
-<div class="arithmatex">\[
-C(u,v)=C(v,u),
-\]</div>
-<p>positive density,</p>
-<div class="arithmatex">\[
-c(u,v)&gt;0,
-\]</div>
-<p>and consistency,</p>
-<div class="arithmatex">\[
-\operatorname{logpdf}(u,v)
-=
-\log(\operatorname{pdf}(u,v)).
-\]</div>
-<p>The estimation layer is tested separately so failures in numerical fitting can
-be distinguished from failures in the Frank probability formulas.</p>
+<p>Numerical quadrature can differ slightly from reference values even when
+the underlying copula parameter is identical. Record tolerances and floating-
+point assumptions in statistical regression tests.</p>
 
 
 
@@ -1728,7 +2588,7 @@ be distinguished from failures in the Frank probability formulas.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../architecture/architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Project architecture">
+          <a href="../estimation_validation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Parameter estimation">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1738,20 +2598,20 @@ be distinguished from failures in the Frank probability formulas.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Project architecture
+                Parameter estimation
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../marginals/empirical_marginals/" class="md-footer__link md-footer__link--next" aria-label="Next: Empirical marginals">
+          <a href="../graph_validation/" class="md-footer__link md-footer__link--next" aria-label="Next: Graphs">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Empirical marginals
+                Graphs
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1788,10 +2648,10 @@ be distinguished from failures in the Frank probability formulas.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

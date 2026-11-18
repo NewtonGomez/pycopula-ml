@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://newtongomez.github.io/pycopula-ml/getting-started/development/">
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../quickstart/">
       
       
         <link rel="next" href="../../concepts/mathematical_foundations/">
@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -33,7 +33,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -214,7 +214,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../quickstart/" class="md-tabs__link">
           
   
   
@@ -273,8 +273,15 @@
   
     
     
+      
+  
+  
+  
+  
+    
+    
       <li class="md-tabs__item">
-        <a href="../../copulas/frank_copula/" class="md-tabs__link">
+        <a href="../../copulas/parametrics/" class="md-tabs__link">
           
   
   
@@ -282,6 +289,9 @@
 
         </a>
       </li>
+    
+  
+
     
   
 
@@ -299,6 +309,126 @@
   
   
   Marginals
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../estimation/maximum_likelihood/" class="md-tabs__link">
+          
+  
+  
+  Estimation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-selection/selection/" class="md-tabs__link">
+          
+  
+  
+  Model Selection
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dependence/mutual_information/" class="md-tabs__link">
+          
+  
+  
+  Dependence
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../graphs/chain/" class="md-tabs__link">
+          
+  
+  
+  Graphs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/dependence/" class="md-tabs__link">
+          
+  
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../testing/estimation_validation/" class="md-tabs__link">
+          
+  
+  
+  Testing and Validation
 
         </a>
       </li>
@@ -479,6 +609,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -553,10 +711,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#editable-installation" class="md-nav__link">
+  <a href="#python-style-pep-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Editable installation
+        Python style: PEP 8
       
     </span>
   </a>
@@ -564,10 +722,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#style" class="md-nav__link">
+  <a href="#tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Style
+        Tests
       
     </span>
   </a>
@@ -575,10 +733,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-before-commit" class="md-nav__link">
+  <a href="#public-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Test before commit
+        Public API
       
     </span>
   </a>
@@ -586,60 +744,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-layers" class="md-nav__link">
+  <a href="#documentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Test layers
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Test layers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#unit-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unit tests
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integration-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration tests
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#statistical-validation-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Statistical validation scripts
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#distribution-vs-import-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Distribution vs import name
+        Documentation
       
     </span>
   </a>
@@ -647,54 +755,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#current-dependencies" class="md-nav__link">
+  <a href="#dependencies-and-scope" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current dependencies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#public-apis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Public APIs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internal-helpers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Internal helpers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#documentation-conventions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documentation conventions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version status
+        Dependencies and scope
       
     </span>
   </a>
@@ -840,6 +904,62 @@
     
   
     Marginal models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/estimation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/dependence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence measures
   
 
     
@@ -1005,8 +1125,88 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parametric copulas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Parametric copulas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../copulas/frank_copula/" class="md-nav__link">
+      <a href="../../copulas/parametrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/frank/" class="md-nav__link">
         
   
   
@@ -1022,6 +1222,154 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/clayton/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Clayton copula
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/gaussian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gaussian copula
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/joe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joe copula
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/gumbel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gumbel-Hougaard copula
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../copulas/parametrics/ali_mikhail_haq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ali-Mikhail-Haq copula
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1207,7 +1555,7 @@
   <span class="md-ellipsis">
     
   
-    API Reference
+    Estimation
   
 
     
@@ -1220,6 +1568,696 @@
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Estimation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../estimation/maximum_likelihood/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maximum-likelihood estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Selection
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Model Selection
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-selection/selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copula selection and criteria
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dependence
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dependence/mutual_information/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mutual information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dependence/weight_matrices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pairwise weight matrices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Graphs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphs/chain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chain graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graphs/mst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MST graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/dependence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/chain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chain construction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/mst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MST construction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing and Validation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Testing and Validation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/estimation_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameter estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/dependence_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/graph_validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1285,6 +2323,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/estimation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Estimation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/dependence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/graphs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graphs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1312,10 +2434,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_14" id="__nav_14_label" tabindex="0">
             
   
   
@@ -1333,8 +2455,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_14">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1417,10 +2539,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#editable-installation" class="md-nav__link">
+  <a href="#python-style-pep-8" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Editable installation
+        Python style: PEP 8
       
     </span>
   </a>
@@ -1428,10 +2550,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#style" class="md-nav__link">
+  <a href="#tests" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Style
+        Tests
       
     </span>
   </a>
@@ -1439,10 +2561,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-before-commit" class="md-nav__link">
+  <a href="#public-api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Test before commit
+        Public API
       
     </span>
   </a>
@@ -1450,60 +2572,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-layers" class="md-nav__link">
+  <a href="#documentation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Test layers
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Test layers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#unit-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unit tests
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integration-tests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration tests
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#statistical-validation-scripts" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Statistical validation scripts
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#distribution-vs-import-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Distribution vs import name
+        Documentation
       
     </span>
   </a>
@@ -1511,54 +2583,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#current-dependencies" class="md-nav__link">
+  <a href="#dependencies-and-scope" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Current dependencies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#public-apis" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Public APIs
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#internal-helpers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Internal helpers
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#documentation-conventions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Documentation conventions
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#version-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Version status
+        Dependencies and scope
       
     </span>
   </a>
@@ -1587,171 +2615,64 @@
 
 <h1 id="development-workflow">Development workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h1>
 <h2 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h2>
-<p>Create a virtual environment:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.env
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>.env/bin/activate
+<p>Create an isolated environment from the repository root:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[dev]"</span>
 </code></pre></div>
-<p>Install in editable mode:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">".[dev]"</span>
-</code></pre></div>
-<p>Prefer:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest
-</code></pre></div>
-<p>over bare <code>pip3</code> or <code>pytest</code> commands when multiple Python installations exist
-on the same machine.</p>
-<h2 id="editable-installation">Editable installation<a class="headerlink" href="#editable-installation" title="Permanent link">&para;</a></h2>
-<p>The project uses a <code>src/</code> layout:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>src/
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>└── pycopula_ml/
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    ├── copulas/
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    ├── estimation/
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    └── marginals/
-</code></pre></div>
-<p>Editable installation ensures imports resolve through the active environment
-while source changes remain immediately available.</p>
-<h2 id="style">Style<a class="headerlink" href="#style" title="Permanent link">&para;</a></h2>
-<p>The project uses Ruff for formatting and linting.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ruff<span class="w"> </span>format<span class="w"> </span>.
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ruff<span class="w"> </span>check<span class="w"> </span>.
-</code></pre></div>
-<p>The current configuration targets PEP 8-compatible conventions and import
-ordering.</p>
-<h2 id="test-before-commit">Test before commit<a class="headerlink" href="#test-before-commit" title="Permanent link">&para;</a></h2>
-<p>Recommended sequence:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ruff<span class="w"> </span>format<span class="w"> </span>.
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>ruff<span class="w"> </span>check<span class="w"> </span>.
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest
-</code></pre></div>
-<p>For the estimation module specifically:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/estimation<span class="w"> </span>-v
-</code></pre></div>
-<h2 id="test-layers">Test layers<a class="headerlink" href="#test-layers" title="Permanent link">&para;</a></h2>
-<p>The project distinguishes several testing responsibilities.</p>
-<h3 id="unit-tests">Unit tests<a class="headerlink" href="#unit-tests" title="Permanent link">&para;</a></h3>
-<p>Unit tests are deterministic and belong in <code>tests/</code>.</p>
-<p>For estimation, they should test the optimizer independently from a specific
-copula family whenever possible.</p>
-<p>For example, a synthetic log-likelihood with a known maximum can verify that
-<code>fit_copula_mle()</code> correctly:</p>
+<p>The distribution name is <code>pycopula-ml</code>; the Python import name is
+<code>pycopula_ml</code>. The package uses the <code>src/</code> layout.</p>
+<h2 id="python-style-pep-8">Python style: PEP 8<a class="headerlink" href="#python-style-pep-8" title="Permanent link">&para;</a></h2>
+<p>Use PEP 8 conventions for Python source code and documentation examples:</p>
 <ul>
-<li>finds the optimum;</li>
-<li>searches multiple intervals;</li>
-<li>validates input domains;</li>
-<li>rejects invalid bounds.</li>
+<li>Four spaces per indentation level; no tab indentation.</li>
+<li><code>snake_case</code> for modules, variables, and functions; <code>PascalCase</code> for classes.</li>
+<li>Consistent imports: standard library, third-party packages, local package.</li>
+<li>Prefer lines of 79 characters or fewer in docstrings and comments; keep
+  code within the repository's configured formatter line length.</li>
+<li>Add type hints where they clarify public interfaces.</li>
+<li>Use NumPy-style docstrings for statistical functions and classes.</li>
 </ul>
-<h3 id="integration-tests">Integration tests<a class="headerlink" href="#integration-tests" title="Permanent link">&para;</a></h3>
-<p>Integration tests verify that multiple package layers work together.</p>
-<p>A representative fitting path is:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>bivariate_pseudo_observations()
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>        ↓
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>FrankCopula
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        ↓
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>fit_copula_mle()
+<p>Run the project's formatter and linter:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ruff<span class="w"> </span>format<span class="w"> </span>.
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ruff<span class="w"> </span>check<span class="w"> </span>.
 </code></pre></div>
-<p>These tests should remain deterministic if they are included in continuous
-integration.</p>
-<h3 id="statistical-validation-scripts">Statistical validation scripts<a class="headerlink" href="#statistical-validation-scripts" title="Permanent link">&para;</a></h3>
-<p>Monte Carlo experiments should live under a path such as:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>scripts/validation/
+<p>Formatting documentation examples does not change the library's source code.</p>
+<h2 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h2>
+<p>Run unit and integration tests:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>--cov<span class="o">=</span>pycopula_ml<span class="w"> </span>--cov-report<span class="o">=</span>term-missing
 </code></pre></div>
-<p>They are used to study statistical properties such as:</p>
-<ul>
-<li>estimator bias;</li>
-<li>MAE;</li>
-<li>RMSE;</li>
-<li>variability across repeated samples;</li>
-<li>effect of sample size.</li>
-</ul>
-<p>They should not replace deterministic unit tests.</p>
-<h2 id="distribution-vs-import-name">Distribution vs import name<a class="headerlink" href="#distribution-vs-import-name" title="Permanent link">&para;</a></h2>
-<p>The package distribution name is:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pycopula-ml
+<p>The repository's test paths may include <code>tests/estimation</code>,
+<code>tests/dependence</code>, <code>tests/graphs</code>, and <code>tests/integration</code>; verify their
+presence before running path-specific selections.</p>
+<p>Deterministic unit tests should cover numerical domains, input validation,
+independence parameters, estimation results, graph invariants, and error paths.
+Monte Carlo experiments can supplement these tests but should not replace them.</p>
+<h2 id="public-api">Public API<a class="headerlink" href="#public-api" title="Permanent link">&para;</a></h2>
+<p>Prefer imports exposed by package <code>__init__.py</code> modules:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.marginals</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarginalSelector</span>
 </code></pre></div>
-<p>The Python import name is:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>pycopula_ml
+<p>Internal functions beginning with <code>_</code> are implementation details and should
+not be treated as stable public APIs.</p>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h2>
+<p>Documentation pages are Markdown files in <code>docs/</code>, with site configuration
+in <code>mkdocs.yml</code>. Build and preview the site with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>mkdocs-material
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>build<span class="w"> </span>--strict
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>python<span class="w"> </span>-m<span class="w"> </span>mkdocs<span class="w"> </span>serve
 </code></pre></div>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pycopula_ml</span>
-</code></pre></div>
-<h2 id="current-dependencies">Current dependencies<a class="headerlink" href="#current-dependencies" title="Permanent link">&para;</a></h2>
-<p>Core:</p>
-<ul>
-<li>NumPy</li>
-<li>SciPy</li>
-</ul>
-<p>Development:</p>
-<ul>
-<li>pytest</li>
-<li>pytest-cov</li>
-<li>Ruff</li>
-</ul>
-<p>Documentation dependencies may include:</p>
-<ul>
-<li>Sphinx</li>
-<li>numpydoc</li>
-</ul>
-<p>SciPy currently provides both:</p>
-<ul>
-<li>continuous distribution functionality used by marginal models;</li>
-<li>bounded scalar numerical optimization used internally by the estimation
-  layer.</li>
-</ul>
-<p>User code should normally access optimization through <code>pycopula_ml.estimation</code>
-rather than import <code>scipy.optimize</code> directly.</p>
-<h2 id="public-apis">Public APIs<a class="headerlink" href="#public-apis" title="Permanent link">&para;</a></h2>
-<p>Prefer imports from package <code>__init__.py</code> files.</p>
-<p>Recommended:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.copulas</span><span class="w"> </span><span class="kn">import</span> <span class="n">FrankCopula</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.marginals</span><span class="w"> </span><span class="kn">import</span> <span class="n">MarginalSelector</span>
-</code></pre></div>
-<p>rather than importing internal implementation paths unless needed for
-development.</p>
-<p>Recommended:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
-</code></pre></div>
-<p>Internal-development import:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pycopula_ml.estimation.maximum_likelihood</span><span class="w"> </span><span class="kn">import</span> <span class="n">fit_copula_mle</span>
-</code></pre></div>
-<p>The first form is preferred for user-facing code.</p>
-<h2 id="internal-helpers">Internal helpers<a class="headerlink" href="#internal-helpers" title="Permanent link">&para;</a></h2>
-<p>Functions and methods beginning with <code>_</code>, such as:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>_prepare_inputs()
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>_prepare_pseudo_observations()
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>_negative_log_likelihood()
-</code></pre></div>
-<p>are internal implementation details.</p>
-<p>They are not considered stable public API.</p>
-<h2 id="documentation-conventions">Documentation conventions<a class="headerlink" href="#documentation-conventions" title="Permanent link">&para;</a></h2>
-<p>Docstrings currently follow NumPy-style structure:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Parameters
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>----------
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>...
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Returns
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>-------
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>...
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>Raises
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>------
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>...
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>Notes
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>-----
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>...
-</code></pre></div>
-<p>Mathematical expressions are written with Sphinx-compatible math directives
-where appropriate.</p>
-<h2 id="version-status">Version status<a class="headerlink" href="#version-status" title="Permanent link">&para;</a></h2>
-<p>Current development version:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>0.1.0
-</code></pre></div>
-<p>Development status:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>Alpha
-</code></pre></div>
-<p>The public API should not yet be considered stable.</p>
+<p>Use descriptive Markdown headings, relative links, fenced code blocks with
+language identifiers, and mathematical notation consistent with the other
+pages. Keep examples small, reproducible, and application-neutral.</p>
+<h2 id="dependencies-and-scope">Dependencies and scope<a class="headerlink" href="#dependencies-and-scope" title="Permanent link">&para;</a></h2>
+<p>NumPy and SciPy are the documented statistical dependencies. Optional packages
+used only in presentation examples are not required by the core APIs. Verify
+optional dependency groups against the repository's <code>pyproject.toml</code> before
+advertising installation extras.</p>
 
 
 
@@ -1787,7 +2708,7 @@ where appropriate.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+          <a href="../quickstart/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quick start">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1797,7 +2718,7 @@ where appropriate.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Home
+                Quick start
               </div>
             </div>
           </a>
@@ -1847,10 +2768,10 @@ where appropriate.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
