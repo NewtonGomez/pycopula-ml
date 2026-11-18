@@ -7,3 +7,5 @@ venv/
 .env
 data/
 scripts/
+results/
+.DS_Store
